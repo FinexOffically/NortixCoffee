@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Nortix кофе и чай - 106 рецептов</title>
+    <meta name="description" content="Nortix кофе и чай - 106 подробных рецептов с пошаговыми инструкциями">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="https://images.icon-icons.com/2719/PNG/256/coffee_icon_175278.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #111111;
+            --bg-secondary: #1a1a1a;
+            --text: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent: #6f4e37;
+            --card-bg: #1e1e1e;
+            --shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+            --telegram: #0088cc;
+            --tiktok: #000000;
+            --instagram: #e4405f;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 16px; }
+        .header { background: var(--bg-secondary); position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; height: 60px; position: relative; }
+        .logo { font-size: 22px; font-weight: 700; color: var(--accent); cursor: pointer; z-index: 1001; }
+        .mobile-menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 24px; cursor: pointer; padding: 10px; z-index: 1001; width: 44px; height: 44px; position: absolute; right: 0; top: 8px; }
+        .nav-list { display: flex; list-style: none; gap: 24px; }
+        .nav-link { color: var(--text); text-decoration: none; font-weight: 500; cursor: pointer; background: none; border: none; font-size: 15px; padding: 8px 0; white-space: nowrap; position: relative; font-family: 'Inter', sans-serif; }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: var(--transition); }
+        .nav-link:hover::after { width: 100%; }
+        .hero { padding: 40px 0; }
+        .hero-container { display: flex; align-items: center; gap: 40px; }
+        .hero-content { flex: 1; }
+        .hero-title { font-size: 42px; margin-bottom: 20px; line-height: 1.2; }
+        .hero-title span { color: var(--accent); }
+        .hero-text { color: var(--text-secondary); margin-bottom: 30px; font-size: 16px; }
+        .hero-image { flex: 1; border-radius: var(--radius); overflow: hidden; }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn { padding: 14px 28px; border: none; border-radius: 40px; background: var(--accent); color: white; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 15px; white-space: nowrap; font-family: 'Inter', sans-serif; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(111,78,55,0.4); }
+        .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--text); }
+        .stats { padding: 40px 0; background: var(--bg-secondary); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .stat-item { background: var(--card-bg); padding: 24px 16px; border-radius: var(--radius); text-align: center; }
+        .stat-number { font-size: 36px; color: var(--accent); font-weight: 700; margin-bottom: 5px; }
+        .search-section { padding: 30px 0; }
+        .search-box { position: relative; max-width: 500px; margin: 0 auto; width: 100%; }
+        .search-box i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); font-size: 16px; pointer-events: none; }
+        .search-box input { width: 100%; padding: 14px 14px 14px 45px; border: none; border-radius: 40px; background: var(--card-bg); color: var(--text); font-size: 15px; font-family: 'Inter', sans-serif; }
+        .search-box input:focus { outline: 2px solid var(--accent); }
+        .filter-buttons { display: flex; gap: 10px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+        .filter-btn { padding: 10px 20px; border: none; border-radius: 40px; background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer; font-size: 14px; font-family: 'Inter', sans-serif; }
+        .filter-btn.active { background: var(--accent); color: white; }
+        .recipes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; padding: 30px 0; }
+        .recipe-card { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: var(--transition); height: 100%; display: flex; flex-direction: column; }
+        .recipe-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(111,78,55,0.3); }
+        .recipe-image { height: 200px; overflow: hidden; background: #2a2a2a; }
+        .recipe-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .recipe-card:hover .recipe-image img { transform: scale(1.1); }
+        .recipe-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .recipe-title { font-size: 20px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+        .recipe-title h3 { font-size: 20px; font-weight: 600; }
+        .recipe-category { background: var(--accent); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+        .recipe-time { color: var(--text-secondary); margin-bottom: 15px; font-size: 14px; }
+        .recipe-time i { color: var(--accent); margin-right: 6px; }
+        .recipe-ingredients { margin-bottom: 15px; flex: 1; }
+        .recipe-ingredients h4 { color: var(--accent); margin-bottom: 8px; font-size: 14px; font-weight: 600; }
+        .recipe-ingredients ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+        .recipe-ingredients li { background: rgba(111,78,55,0.2); padding: 5px 12px; border-radius: 20px; font-size: 12px; }
+        .recipe-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+        .favorite-btn { background: none; border: none; color: #ff4757; font-size: 22px; cursor: pointer; transition: var(--transition); padding: 8px; width: 44px; height: 44px; }
+        .favorite-btn:hover { transform: scale(1.3); }
+        .recipe-footer .btn { padding: 8px 16px; font-size: 13px; }
+        .single-recipe { padding: 40px 0; }
+        .single-recipe-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: var(--radius); }
+        .single-recipe-image { overflow: hidden; border-radius: var(--radius); }
+        .single-recipe-image img { width: 100%; border-radius: var(--radius); }
+        .single-recipe-content h1 { font-size: 32px; margin-bottom: 20px; }
+        .single-recipe-meta { display: flex; gap: 25px; margin-bottom: 25px; color: var(--text-secondary); flex-wrap: wrap; font-size: 16px; }
+        .single-recipe-ingredients { margin: 30px 0; }
+        .single-recipe-ingredients h2 { color: var(--accent); margin-bottom: 15px; font-size: 24px; }
+        .single-recipe-ingredients ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .single-recipe-ingredients li { background: rgba(111,78,55,0.2); padding: 10px 16px; border-radius: 30px; font-size: 15px; }
+        .single-recipe-steps h2 { color: var(--accent); margin-bottom: 15px; font-size: 24px; }
+        .single-recipe-steps ol { padding-left: 25px; }
+        .single-recipe-steps li { margin-bottom: 15px; color: var(--text-secondary); font-size: 16px; line-height: 1.6; }
+        .single-recipe-steps li::marker { color: var(--accent); font-weight: 600; }
+        .favorites-header { margin: 40px 0; text-align: center; }
+        .favorites-header h2 { font-size: 32px; margin-bottom: 10px; }
+        .contacts-page { padding: 50px 0; }
+        .contacts-card { background: var(--card-bg); border-radius: var(--radius); padding: 40px; max-width: 600px; margin: 0 auto; text-align: center; }
+        .contacts-icon { font-size: 64px; color: var(--accent); margin-bottom: 20px; }
+        .contacts-card h2 { font-size: 32px; margin-bottom: 20px; }
+        .contacts-card p { color: var(--text-secondary); font-size: 18px; margin-bottom: 15px; }
+        .contacts-email { font-size: 24px; color: var(--accent); font-weight: 600; margin: 25px 0; padding: 15px; background: var(--bg); border-radius: 50px; display: inline-block; }
+        .contacts-note { color: var(--text-secondary); font-size: 16px; margin-top: 20px; font-style: italic; }
+        .social-links { display: flex; gap: 25px; margin-top: 30px; justify-content: center; }
+        .social-link { font-size: 42px; transition: var(--transition); width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--bg); text-decoration: none; }
+        .social-link[title="Telegram"] { color: var(--telegram); }
+        .social-link[title="TikTok"] { color: var(--tiktok); }
+        .social-link[title="Instagram"] { color: var(--instagram); }
+        .social-link:hover { transform: translateY(-5px) scale(1.1); filter: brightness(1.2); }
+        .footer { background: var(--bg-secondary); padding: 25px 0; text-align: center; color: var(--text-secondary); margin-top: auto; }
+        .back-btn { margin-bottom: 25px; background: var(--card-bg); border: none; color: var(--text); padding: 12px 24px; border-radius: 30px; font-size: 15px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; }
+        .back-btn:hover { background: var(--accent); transform: translateX(-5px); }
+        .cookie-consent { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-secondary); padding: 20px; z-index: 9999; transform: translateY(100%); transition: transform 0.3s ease; border-top: 2px solid var(--accent); }
+        .cookie-consent.show { transform: translateY(0); }
+        .cookie-content { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+        .cookie-text { display: flex; align-items: center; gap: 15px; color: var(--text); font-size: 15px; flex: 1; }
+        .cookie-text i { color: var(--accent); font-size: 26px; }
+        .cookie-buttons { display: flex; gap: 15px; }
+        .cookie-btn { padding: 12px 28px; border: none; border-radius: 30px; font-weight: 600; cursor: pointer; font-size: 15px; white-space: nowrap; font-family: 'Inter', sans-serif; }
+        .cookie-btn.accept { background: var(--accent); color: white; }
+        .cookie-btn.decline { background: transparent; border: 1px solid var(--text-secondary); color: var(--text); }
+        @media (max-width: 1024px) {
+            .hero-container { flex-direction: column; text-align: center; gap: 30px; }
+            .hero-title { font-size: 38px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .single-recipe-container { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: flex; }
+            .nav-list { position: fixed; top: 60px; left: 0; right: 0; background: var(--bg-secondary); flex-direction: column; align-items: center; padding: 20px; gap: 16px; transform: translateY(-150%); transition: transform 0.3s ease; z-index: 999; border-bottom: 1px solid var(--accent); }
+            .nav-list.active { transform: translateY(0); }
+            .hero-title { font-size: 32px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .filter-buttons { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 12px; }
+            .recipes-grid { grid-template-columns: 1fr; }
+            .single-recipe-ingredients ul { grid-template-columns: 1fr; }
+            .contacts-email { font-size: 18px; }
+            .social-link { font-size: 36px; width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo" onclick="navigateTo('home')">Nortix</div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Меню">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul class="nav-list" id="mobileMenu">
+                    <li><button class="nav-link" onclick="navigateTo('home')">Главная</button></li>
+                    <li><button class="nav-link" onclick="navigateTo('coffee')">Кофе</button></li>
+                    <li><button class="nav-link" onclick="navigateTo('tea')">Чай</button></li>
+                    <li><button class="nav-link" onclick="navigateTo('food')">Еда</button></li>
+                    <li><button class="nav-link" onclick="navigateTo('favorites')">Избранное</button></li>
+                    <li><button class="nav-link" onclick="navigateTo('contacts')">Контакты</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content"></main>
+
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <i class="fas fa-cookie-bite"></i>
+                <span>Мы используем файлы cookie для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с этим.</span>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn accept" onclick="acceptCookies()">Принять</button>
+                <button class="cookie-btn decline" onclick="declineCookies()">Отклонить</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Nortix кофе, чай и еда</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearElement = document.querySelector('.footer p');
+            if (yearElement) {
+                const currentYear = new Date().getFullYear();
+                yearElement.innerHTML = `© ${currentYear} Nortix кофе, чай и еда`;
+            }
+        });
+
+        function showCookieConsent() {
+            if (!localStorage.getItem('cookieConsent')) {
+                setTimeout(() => document.getElementById('cookieConsent').classList.add('show'), 1000);
+            }
+        }
+        window.acceptCookies = function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieConsent').classList.remove('show');
+        };
+        window.declineCookies = function() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieConsent').classList.remove('show');
+        };
+
+        // Coffee Recipes (1-35)
+        const coffeeRecipes = [
+            { id: 1, title: 'Классический эспрессо', category: 'coffee', time: '5 минут', image: 'https://avatars.mds.yandex.net/i?id=aa2cfb2b9d896a0156afb2bdba826fdb21507770-4242799-images-thumbs&n=13', ingredients: ['Кофе молотый — 9 г (примерно 1 столовая ложка с горкой)', 'Вода — 40 мл (фильтрованная, не из-под крана)'], steps: [
+                'ШАГ 1: ПОДГОТОВКА КОФЕМАШИНЫ. Включите кофемашину и дайте ей прогреться минимум 15-20 минут. Важно, чтобы температура воды была стабильной 92-95°C. Пока машина греется, убедитесь, что в бойлере достаточно воды, а холдер чистый и сухой.',
+                'ШАГ 2: ПОМОЛ КОФЕ. Если вы мелете зерна сами, настройте кофемолку на очень мелкий помол — консистенция должна напоминать сахарную пудру или муку. Если кофе будет слишком крупным, эспрессо получится водянистым и кислым. Слишком мелкий помол — вода не пройдет, напиток будет пережженным и горьким.',
+                'ШАГ 3: ДОЗИРОВКА И ТРАМПОВКА. Насыпьте 9 г молотого кофе в холдер. Пальцем разровняйте поверхность, чтобы кофе лежал ровным слоем. Возьмите темпер и с усилием около 15 кг (как будто давите на весы) утрамбуйте кофе. Важно держать темпер строго горизонтально, чтобы кофейная таблетка получилась ровной — иначе вода пройдет быстрее с одной стороны.',
+                'ШАГ 4: ПРОЛИВ. Установите холдер в кофемашину и сразу же нажмите кнопку старта (не ждите, иначе кофе перегреется). Идеальное время пролива — 25-30 секунд. За это время должно вытечь 40 мл напитка. Смотрите на струйку: сначала она должна быть тонкой и темной, потом станет более светлой и густой, как мед.',
+                'ШАГ 5: ПРОВЕРКА КАЧЕСТВА. У правильного эспрессо должна быть плотная пенка орехового цвета — крема. Если пенка бледная, быстро исчезает или имеет большие дыры — значит, что-то пошло не так: либо кофе старый, либо помол неправильный, либо температура воды низкая. Выпейте сразу, пока пенка не осела.'
+            ] },
+            { id: 2, title: 'Итальянский капучино', category: 'coffee', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=025a67fa354610b646f28d87ede524b8f68c35c1-4507796-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл (сваренный по рецепту №1)', 'Молоко — 150 мл (жирность 3.2-3.5%, обязательно холодное, не теплое)'], steps: [
+                'ШАГ 1: ПРИГОТОВЬТЕ ЭСПРЕССО. Сварите эспрессо в широкую чашку объемом 180-200 мл. Важно: если чашка холодная, кофе быстро остынет — ополосните ее горячей водой перед приготовлением.',
+                'ШАГ 2: ПОДГОТОВКА МОЛОКА. Налейте холодное молоко в металлический кувшинчик — питчер. Молоко должно быть холодным, прямо из холодильника (4-6°C). Только так получится взбить хорошую пену. Не наливайте молоко выше основания носика питчера — при взбивании объем увеличится в 1.5-2 раза.',
+                'ШАГ 3: ВЗБИВАНИЕ МОЛОКА. Опустите паровую трубку чуть ниже поверхности молока. Включите пар и одновременно опускайте питчер вниз, чтобы трубка всегда была у поверхности — вы должны слышать характерный звук «чшш-чшш», как будто рвете бумагу. Когда молоко нагреется до 30-40°C (питчер станет теплым), погрузите трубку глубже, чтобы создать воронку и разбить крупные пузырьки. Нагревайте до 60-65°C — когда рука терпит тепло, но обжечься уже можно.',
+                'ШАГ 4: ТЕКСТУРА МОЛОКА. Готовое молоко должно быть похоже на белую краску — гладкое, блестящее, без видимых пузырьков. Постучите питчером по столу, чтобы лопнули оставшиеся пузырьки, и покрутите круговыми движениями, чтобы молоко и пена перемешались.',
+                'ШАГ 5: ВЛИВАНИЕ. Наклоните чашку с эспрессо под углом 45 градусов и начинайте вливать молоко тонкой струйкой. Постепенно выравнивайте чашку. В конце сделайте движение рукой, чтобы на поверхности появился белый круг — это и есть капучино. Можно зубочисткой сделать рисунок.'
+            ] },
+            { id: 3, title: 'Венский кофе', category: 'coffee', time: '7 минут', image: 'https://avatars.mds.yandex.net/i?id=1b6aaaee57a6407d3bdd7391eca88fdbe3168171-12441694-images-thumbs&n=13', ingredients: ['Кофе черный — 200 мл (сваренный в турке или кофемашине)', 'Сливки — 50 г (жирность 33-35%, обязательно охлажденные)'], steps: [
+                'ШАГ 1: СВАРИТЕ КОФЕ. Приготовьте 200 мл крепкого черного кофе. Лучше всего использовать смесь арабики и робусты — будет насыщеннее. Кофе должен быть горячим, но не кипящим (около 85°C).',
+                'ШАГ 2: ПОДГОТОВКА СЛИВОК. Достаньте сливки из холодильника за 2 минуты до взбивания. Налейте их в холодную миску. Важно: сливки должны быть очень холодными, посуда тоже холодная — так они лучше взобьются.',
+                'ШАГ 3: ВЗБИВАНИЕ. Взбивайте сливки миксером на средней скорости. Сначала они станут жидкими, потом начнут густеть. Как только появятся мягкие пики (сливки держат форму, но не жесткие) — остановитесь. Не взбивайте до состояния масла! Если перевзбить, сливки расслоятся.',
+                'ШАГ 4: СБОРКА. Налейте горячий кофе в стеклянный стакан (через прозрачные стенки будет видно красивый слой сливок). Аккуратно выложите сливки ложкой сверху. Не перемешивайте.',
+                'ШАГ 5: УКРАШЕНИЕ. Посыпьте сливки тертым шоколадом, корицей или какао. Можно добавить щепотку апельсиновой цедры. Подавайте с ложкой — сначала пьют кофе через сливки, потом едят их ложкой.'
+            ] },
+            { id: 4, title: 'Латте с карамелью', category: 'coffee', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=b3cac01411b2a934d22b255da9677462494133a6-4233516-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл (1 порция)', 'Молоко — 200 мл (жирность 3.2%)', 'Сироп карамельный — 15 мл (можно купить готовый или сварить самим)'], steps: [
+                'ШАГ 1: ПОДГОТОВКА СТАКАНА. Возьмите высокий стеклянный стакан объемом 300-350 мл. Налейте на дно карамельный сироп. Если хотите слаще — добавьте 20 мл.',
+                'ШАГ 2: ЭСПРЕССО. Сварите эспрессо и аккуратно влейте его в стакан с сиропом. Старайтесь лить по центру, чтобы не разбрызгивать сироп по стенкам — тогда слои будут четкими.',
+                'ШАГ 3: МОЛОКО. Налейте холодное молоко в питчер и вспеньте его как для капучино (смотрите рецепт капучино), но сделайте пену чуть более жидкой и воздушной. Для латте нужно больше пены, чем для капучино.',
+                'ШАГ 4: ВЛИВАНИЕ. Наклоните стакан и вливайте молоко тонкой струйкой по стенке. Пена начнет подниматься наверх. Лейте медленно, чтобы слои не перемешались.',
+                'ШАГ 5: ЗАВЕРШЕНИЕ. Когда стакан наполнится, оставшуюся пену выложите ложкой сверху. Полейте сверху карамельным сиропом, сделайте зубочисткой узор. Подавайте с широкой трубочкой.'
+            ] },
+            { id: 5, title: 'Кофе по-турецки', category: 'coffee', time: '12 минут', image: 'https://avatars.mds.yandex.net/i?id=c29668a989ba978638fcd579cdaaa80b6e1728fd-5586941-images-thumbs&n=13', ingredients: ['Кофе — 10 г (2 чайные ложки с горкой, помол "в пыль")', 'Вода — 100 мл (холодная, фильтрованная)'], steps: [
+                'ШАГ 1: ТУРКА. Возьмите медную или керамическую турку. Важно: турка должна быть с узким горлышком — так пенка не разрушится и весь аромат останется внутри. Турка должна быть абсолютно чистой, без запаха предыдущих варок.',
+                'ШАГ 2: ЗАКЛАДКА ИНГРЕДИЕНТОВ. Насыпьте кофе в турку. Добавьте сахар, если пьете сладкий (обычно 0.5-1 ч.л.). Залейте холодной водой. Не перемешивайте! Кофе сам поднимется и растворится при нагреве.',
+                'ШАГ 3: НАГРЕВ. Поставьте турку на самый маленький огонь (или в песок, если есть). Нагрев должен быть медленным, чтобы кофе успел отдать все масла и аромат. Вода будет нагреваться, и на поверхности начнет появляться пенка.',
+                'ШАГ 4: ПЕНКА. Когда пенка поднимется почти до краев (но не закипит!), снимите турку с огня. Дайте пенке осесть. Повторите этот прием 2-3 раза. Чем больше подъемов, тем насыщеннее будет кофе. Важно: не давайте закипеть — кипяток убивает вкус и аромат, кофе станет горьким.',
+                'ШАГ 5: ПОДАЧА. Дайте кофе постоять 1 минуту, чтобы гуща осела на дно. Разлейте по чашкам, стараясь не взболтать гущу. В идеале — подавать со стаканом холодной воды, чтобы запивать.'
+            ] },
+            { id: 6, title: 'Айс кофе', category: 'coffee', time: '6 минут', image: 'https://avatars.mds.yandex.net/i?id=3b4de3449a104bd3d5cfe8c42758c38a8fe885b4-5275490-images-thumbs&n=13', ingredients: ['Эспрессо — 80 мл (двойная порция)', 'Молоко — 150 мл (холодное)', 'Лед — 150-200 г (кубики, не крошка)'], steps: [
+                'ШАГ 1: ЭСПРЕССО. Сварите двойной эспрессо. Дайте ему немного остыть при комнатной температуре 2-3 минуты. Если влить горячий кофе в лед, лед быстро растает и напиток станет водянистым.',
+                'ШАГ 2: ПОДГОТОВКА СТАКАНА. Возьмите высокий стакан (хайбол) и наполните его льдом доверху. Чем больше льда, тем дольше напиток останется холодным.',
+                'ШАГ 3: МОЛОКО. Залейте лед холодным молоком. Не до самого края, оставьте место для кофе.',
+                'ШАГ 4: КОФЕ. Медленно влейте эспрессо. Если лить аккуратно, получится красивый градиент — снизу молоко, сверху кофе.',
+                'ШАГ 5: ПОДАЧА. Вставьте трубочку и подавайте. Не перемешивайте — пьют через трубочку, постепенно смешивая слои. Можно украсить шариком мороженого сверху (тогда это будет айс-гляссе).'
+            ] },
+            { id: 7, title: 'Мокко', category: 'coffee', time: '9 минут', image: 'https://avatars.mds.yandex.net/i?id=4ee53e1f4d5e21a54f5e271eda7403f1f2587f7a-9271022-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Молоко — 150 мл', 'Шоколад — 30 г (темный, 70-80% какао)'], steps: [
+                'ШАГ 1: ШОКОЛАД. Поломайте шоколад на кусочки. Растопите его на водяной бане: поставьте миску с шоколадом над кастрюлей с кипящей водой, дно миски не должно касаться воды. Или в микроволновке короткими импульсами по 15 секунд, каждый раз перемешивая. Не перегрейте, иначе шоколад свернется.',
+                'ШАГ 2: СМЕШИВАНИЕ. Налейте растопленный шоколад в чашку. Сварите эспрессо и влейте его в шоколад. Тщательно перемешайте до однородности. Должна получиться густая шоколадно-кофейная паста.',
+                'ШАГ 3: МОЛОКО. Вспеньте молоко как для капучино (температура 60°C, мелкая пена).',
+                'ШАГ 4: ВЛИВАНИЕ. Влейте молоко в чашку. Сначала лейте тонкой струйкой, размешивая шоколадную основу, потом добавьте остальное молоко.',
+                'ШАГ 5: УКРАШЕНИЕ. Сверху выложите молочную пену. Посыпьте какао или тертым шоколадом. Можно сделать рисунок зубочисткой. Подавайте с печеньем.'
+            ] },
+            { id: 8, title: 'Флэт Уайт', category: 'coffee', time: '7 минут', image: 'https://avatars.mds.yandex.net/i?id=be13b6cabf6655c8121ae7ade1a49a24be0cc3c4-16509328-images-thumbs&n=13', ingredients: ['Эспрессо — 60 мл (двойной)', 'Молоко — 120 мл (жирное, 3.5-4%)'], steps: [
+                'ШАГ 1: ОСОБЕННОСТЬ НАПИТКА. Флэт Уайт пришел из Австралии. Главное отличие от латте — меньше молока и очень тонкий слой пены, почти как бархат. Молоко должно быть жирным, чтобы создать гладкую текстуру.',
+                'ШАГ 2: ЭСПРЕССО. Сварите двойной эспрессо в небольшую чашку (180-200 мл). Кофе должен быть крепким и насыщенным.',
+                'ШАГ 3: МОЛОКО. Вспеньте молоко. Но в отличие от капучино, пена должна быть очень тонкой и однородной — почти без пузырьков. Называется "микрофоам". Для этого держите паровую трубку глубже и дольше создавайте воронку.',
+                'ШАГ 4: ТЕКСТУРА. Готовое молоко должно напоминать жидкую сметану и блестеть как глянец. Постучите питчером, чтобы убрать остатки пузырьков, и интенсивно покрутите.',
+                'ШАГ 5: ВЛИВАНИЕ. Вливайте молоко в эспрессо с небольшой высоты. К концу вливания сделайте движение, чтобы на поверхности появился тонкий белый круг, но без толстой шапки пены. Пена должна быть примерно 0.5 см и выглядеть как гладкий шелк.'
+            ] },
+            { id: 9, title: 'Раф кофе', category: 'coffee', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=069553de713c2fa40275a29c01153a3d0c91a6fe-10471642-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Сливки — 100 мл (жирность 10-11%)', 'Ванильный сахар — 1 пакетик (10 г)'], steps: [
+                'ШАГ 1: ИСТОРИЯ. Раф-кофе придумали в России в 90-х. Это не просто кофе со сливками, а особая техника приготовления, при которой сливки и кофе взбиваются вместе, создавая нежную кремовую текстуру.',
+                'ШАГ 2: СМЕШИВАНИЕ. В питчер налейте эспрессо, сливки и высыпьте ванильный сахар. Важно: не используйте ванилин — он горчит, нужен именно ванильный сахар.',
+                'ШАГ 3: ВЗБИВАНИЕ. Опустите паровую трубку в смесь и включите пар. Взбивайте до 65°C. Смесь должна превратиться в пышную пену, увеличиться в объеме в 1.5-2 раза. Весь процесс занимает 20-30 секунд.',
+                'ШАГ 4: ТЕКСТУРА. Готовый раф должен быть однородным, без разделения на пену и жидкость. Похож на густой молочный коктейль.',
+                'ШАГ 5: ПОДАЧА. Перелейте в прогретую чашку. Посыпьте корицей или тертым шоколадом. Пьют через трубочку или ложкой — из-за густоты.'
+            ] },
+            { id: 10, title: 'Кофе с корицей', category: 'coffee', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=392660f751f77208b494e0231e0f51dec0b936bf-4551637-images-thumbs&n=13', ingredients: ['Кофе — 15 г (примерно 2 ст. ложки)', 'Вода — 200 мл', 'Корица — 1 палочка или 0.5 ч.л. молотой'], steps: [
+                'ШАГ 1: ВЫБОР КОРИЦЫ. Лучше использовать палочку корицы, а не молотую — так вкус будет чище, без горечи. Настоящая корица (цейлонская) светлее и тоньше, чем кассия.',
+                'ШАГ 2: ВАРКА В ТУРКЕ. Если варите в турке: положите кофе, палочку корицы (разломайте на 2 части) и залейте водой. Варите как обычный кофе по-турецки. Корица отдаст свой аромат в процессе нагрева.',
+                'ШАГ 3: ФРЕНЧ-ПРЕСС. Если используете френч-пресс: насыпьте кофе, добавьте корицу, залейте горячей водой (95°C). Перемешайте деревянной ложкой, накройте крышкой, не опуская поршень. Настаивайте 5 минут.',
+                'ШАГ 4: ПРОЦЕЖИВАНИЕ. Если использовали молотую корицу, лучше процедить готовый кофе через мелкое сито или бумажный фильтр, чтобы частички не плавали в чашке.',
+                'ШАГ 5: ПОДАЧА. Разлейте по чашкам. В каждую чашку можно положить палочку корицы для красоты. Сахар добавляйте по вкусу, но корица и так дает сладковатый оттенок.'
+            ] },
+            { id: 11, title: 'Аффогато', category: 'coffee', time: '3 минуты', image: 'https://avatars.mds.yandex.net/i?id=61f86de1997455a75991f5037283534c32dfdbb3-10216894-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл (свежесваренный, горячий)', 'Мороженое — 100 г (пломбир, ванильное)'], steps: [
+                'ШАГ 1: МОРОЖЕНОЕ. Достаньте мороженое из морозилки и сразу положите 1-2 шарика в креманку или глубокую тарелку. Мороженое должно быть очень холодным, прямо из морозилки. Лучше использовать качественный пломбир без растительных жиров — он медленнее тает.',
+                'ШАГ 2: ЭСПРЕССО. Сварите эспрессо. Важно: кофе должен быть максимально горячим и свежим, только что из кофемашины.',
+                'ШАГ 3: ЗАЛИВКА. Сразу же полейте горячим эспрессо мороженое. Кофе начнет таять мороженое, создавая контраст горячего и холодного.',
+                'ШАГ 4: ПОДАЧА. Подавайте немедленно, пока мороженое не растаяло полностью. К столу нести бегом!',
+                'ШАГ 5: УКРАШЕНИЕ. Можно посыпать рублеными орехами, шоколадной крошкой или полить карамелью. Едят десертной ложкой.'
+            ] },
+            { id: 12, title: 'Ирландский кофе', category: 'coffee', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=ca0b94a0199b13792991c6e825f6d8c744f3fd68-5693613-images-thumbs&n=13', ingredients: ['Кофе черный — 150 мл', 'Виски — 50 мл (ирландский, например Jameson)', 'Сливки — 50 мл (33%, слегка взбитые)'], steps: [
+                'ШАГ 1: ПОДГОТОВКА БОКАЛА. Вам нужен специальный ирландский бокал на ножке или жаропрочный стакан. Нагрейте его, ополоснув кипятком. Это важно, чтобы напиток дольше оставался горячим.',
+                'ШАГ 2: САХАР. Насыпьте на дно бокала 1-2 ч.л. коричневого сахара (тростникового). Белый тоже можно, но коричневый дает карамельный оттенок.',
+                'ШАГ 3: ВИСКИ. Налейте виски и размешайте с сахаром, чтобы он начал растворяться.',
+                'ШАГ 4: КОФЕ. Сварите крепкий черный кофе и влейте в бокал. Снова перемешайте, чтобы сахар полностью растворился. Жидкость должна занимать около 3/4 бокала.',
+                'ШАГ 5: СЛИВКИ. Слегка взбейте сливки — они должны стать густыми, но еще литься. Аккуратно вылейте их на обратную сторону ложки, чтобы они легли на кофе слоем. Не перемешивайте! Пьют горячий кофе через холодные сливки.'
+            ] },
+            { id: 13, title: 'Гляссе', category: 'coffee', time: '7 минут', image: 'https://avatars.mds.yandex.net/i?id=da2305040520b67a497fe4bc1b314b1c75ae0908-5338555-images-thumbs&n=13', ingredients: ['Кофе черный — 150 мл', 'Мороженое — 100 г (пломбир, сливочное)'], steps: [
+                'ШАГ 1: КОФЕ. Сварите черный кофе. Можно использовать эспрессо, разбавленный водой (американо), или кофе из френч-пресса. Главное — кофе должен быть крепким и горячим.',
+                'ШАГ 2: ОХЛАЖДЕНИЕ. Горячий кофе нужно обязательно охладить. Если налить горячий кофе на мороженое, оно мгновенно растает, и получится непонятная жижа. Охладите до комнатной температуры или поставьте в холодильник на 10 минут.',
+                'ШАГ 3: СТАКАН. Возьмите высокий стакан. Положите на дно 1-2 шарика мороженого.',
+                'ШАГ 4: ЗАЛИВКА. Аккуратно налейте охлажденный кофе по стенке, чтобы не разрушить шарики мороженого.',
+                'ШАГ 5: ПОДАЧА. Сверху можно украсить взбитыми сливками, шоколадной стружкой, орешками. Подавайте с трубочкой и ложкой.'
+            ] },
+            { id: 14, title: 'Кофе по-мексикански', category: 'coffee', time: '10 минут', image: 'https://cdn.tveda.ru/thumbs/ab3/ab33d1d5a16f420502d66074eb303d5d/4120aa369e0ffc2a1d31b8e126eef2c5.jpg', ingredients: ['Кофе — 20 г', 'Вода — 250 мл', 'Корица — 1 палочка', 'Гвоздика — 2-3 бутона', 'Апельсиновая цедра — полоска'], steps: [
+                'ШАГ 1: ПРЯНОСТИ. В турку или маленькую кастрюльку положите палочку корицы, гвоздику и полоску апельсиновой цедры (только оранжевая часть, без белой — она горчит).',
+                'ШАГ 2: КОФЕ. Насыпьте кофе. Лучше использовать темную обжарку — он лучше сочетается с пряностями.',
+                'ШАГ 3: ВОДА. Залейте холодной водой. Поставьте на медленный огонь.',
+                'ШАГ 4: ВАРКА. Варите как турецкий кофе: доведите до поднятия пенки 2-3 раза, не давая закипеть. Пряности должны настояться и отдать свой аромат.',
+                'ШАГ 5: ПОДАЧА. Процедите через ситечко в чашку. Добавьте сахар по вкусу, но пряности уже дают свою сладость. Можно украсить палочкой корицы.'
+            ] },
+            { id: 15, title: 'Латте макиато', category: 'coffee', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=8ca5d400b4688bd31a72d698ef0b2d6048eb93d5-10023438-images-thumbs&n=13', ingredients: ['Молоко — 200 мл', 'Эспрессо — 40 мл'], steps: [
+                'ШАГ 1: ОСОБЕННОСТЬ. Латте макиато отличается от обычного латте тем, что кофе вливается в молоко, а не наоборот. Получаются четкие слои.',
+                'ШАГ 2: МОЛОКО. Налейте холодное молоко в высокий стакан. Вспеньте его паровой трубкой, но не перемешивайте — должны остаться три слоя: жидкое молоко внизу, прогретое молоко в середине, пена сверху.',
+                'ШАГ 3: ВЫДЕРЖКА. Дайте молоку постоять 30 секунд, чтобы слои стабилизировались.',
+                'ШАГ 4: ЭСПРЕССО. Сварите эспрессо. Очень медленно, тонкой струйкой, вливайте его в центр стакана. Кофе пройдет через пену и остановится между слоем молока и пеной.',
+                'ШАГ 5: РЕЗУЛЬТАТ. В стакане должно быть три слоя: белое молоко внизу, коричневый кофе посередине, белая пена сверху. Не перемешивать! Пьют через трубочку.'
+            ] },
+            { id: 16, title: 'Бамбл', category: 'coffee', time: '7 минут', image: 'https://avatars.mds.yandex.net/i?id=9d45b96eb976ac6e217093430b190c0c6ea9fae4-12936542-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Апельсиновый сок — 100 мл (свежевыжатый лучше)', 'Сироп — 15 мл (карамельный или ванильный)'], steps: [
+                'ШАГ 1: ЧТО ЭТО. Бамбл — кофейный коктейль с апельсиновым соком. Сочетание звучит странно, но на самом деле очень вкусно: кислинка апельсина оттеняет горечь кофе.',
+                'ШАГ 2: ОСНОВА. На дно стакана налейте сироп. Лучше всего карамельный — он свяжет вкусы.',
+                'ШАГ 3: СОК. Добавьте апельсиновый сок. Если сок с мякотью, процедите его. Сок должен быть холодным.',
+                'ШАГ 4: ЛЕД. Наполните стакан льдом до верха. Лед нужен, чтобы слои не смешивались.',
+                'ШАГ 5: КОФЕ. Аккуратно влейте эспрессо по стенке. Он останется сверху. Перед питьем перемешайте трубочкой — сначала будет сладко, потом кисло, потом кофейно.'
+            ] },
+            { id: 17, title: 'Медовый раф', category: 'coffee', time: '9 минут', image: 'https://avatars.mds.yandex.net/i?id=2a00000179f7832a48e621277af181709e39-5009165-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Сливки — 100 мл (10-11%)', 'Мед — 20 г (примерно 1 ч.л. с горкой)'], steps: [
+                'ШАГ 1: ВЫБОР МЕДА. Мед должен быть жидким, не засахаренным. Лучше всего цветочный или липовый — у них не слишком яркий вкус. Гречишный мед может перебить кофе.',
+                'ШАГ 2: СМЕШИВАНИЕ. В питчер налейте эспрессо, сливки и добавьте мед. Мед должен полностью раствориться в горячем кофе, поэтому сначала смешайте эспрессо с медом, потом добавьте сливки.',
+                'ШАГ 3: ВЗБИВАНИЕ. Взбейте смесь паровой трубкой до 65°C. Смесь должна стать пышной, как у обычного рафа.',
+                'ШАГ 4: ТЕКСТУРА. Мед делает раф более плотным и тягучим. Консистенция должна напоминать растопленное мороженое.',
+                'ШАГ 5: ПОДАЧА. Перелейте в чашку. Сверху можно посыпать корицей или добавить каплю меда для красоты.'
+            ] },
+            { id: 18, title: 'Эспрессо тоник', category: 'coffee', time: '5 минут', image: 'https://avatars.mds.yandex.net/i?id=eca4e6fcc27db0ad6245a5f7a3dee4bc4924f066-5341819-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Тоник — 150 мл (лучше качественный, например Fever-Tree)', 'Лед'], steps: [
+                'ШАГ 1: ТРЕНД. Эспрессо-тоник стал очень популярен в последние годы. Освежающий летний напиток с неожиданным вкусом.',
+                'ШАГ 2: ОХЛАЖДЕНИЕ. Тоник должен быть очень холодным. Если есть возможность, охладите бокал в морозилке 10 минут.',
+                'ШАГ 3: ЛЕД. Наполните бокал льдом до самого верха. Чем больше льда, тем лучше.',
+                'ШАГ 4: ТОНИК. Налейте тоник в бокал.',
+                'ШАГ 5: ЭСПРЕССО. Сварите эспрессо и медленно влейте его в тоник. Сразу появится пена. Украсьте долькой апельсина или веточкой розмарина. Пить сразу, не перемешивая — вкус меняется от глотка к глотку.'
+            ] },
+            { id: 19, title: 'Корейский пенный кофе (Дальгона)', category: 'coffee', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=7c4139eaa0985ae394cb3952cf644630b0b846b2-5284840-images-thumbs&n=13', ingredients: ['Кофе растворимый — 20 г (2 ст.л.)', 'Сахар — 20 г (2 ст.л.)', 'Вода — 20 мл (2 ст.л.)', 'Молоко — 200 мл'], steps: [
+                'ШАГ 1: ТИКТОК-ТРЕНД. Этот кофе стал вирусным в 2020 году. Главное — соотношение ингредиентов 1:1:1. Если возьмете 1 ложку кофе, то ложку сахара и ложку воды.',
+                'ШАГ 2: СМЕШИВАНИЕ. В глубокую миску насыпьте растворимый кофе, сахар, налейте воду. Важно: кофе должен быть именно растворимый, сублимированный, не молотый.',
+                'ШАГ 3: ВЗБИВАНИЕ. Взбивайте миксером на высокой скорости 5-7 минут. Сначала будет жидко, потом начнет густеть, и наконец превратится в густую, блестящую пену, как безе. Если взбивать вручную венчиком, потребуется 15-20 минут.',
+                'ШАГ 4: ОСНОВА. В стакан налейте холодное или теплое молоко (можно со льдом).',
+                'ШАГ 5: ПЕНА. Выложите кофейную пену сверху на молоко. Она не утонет, будет держаться шапкой. Перед питьем перемешайте ложкой.'
+            ] },
+            { id: 20, title: 'Кафе де олья (Мексиканский кофе в горшочке)', category: 'coffee', time: '12 минут', image: 'https://avatars.mds.yandex.net/i?id=d1aaca4f92012d93b5b061656b1c9d69ca1fff29-10513429-images-thumbs&n=13', ingredients: ['Кофе — 25 г', 'Корица — 1 палочка', 'Гвоздика — 2 шт', 'Апельсиновая цедра — полоска', 'Пилонсильо (тростниковый сахар) — по вкусу'], steps: [
+                'ШАГ 1: ТРАДИЦИЯ. В Мексике этот кофе варят в глиняных горшочках. Глина дает особый вкус. Если нет глиняного, возьмите обычную турку.',
+                'ШАГ 2: ПРЯНОСТИ. Положите в горшочек палочку корицы, гвоздику и цедру апельсина. Цедру срежьте ножом для овощей — полоской, без белой мякоти.',
+                'ШАГ 3: КОФЕ. Добавьте кофе. Помол должен быть как для турки — очень мелкий.',
+                'ШАГ 4: ВАРКА. Залейте водой, добавьте пилонсильо (если нет, коричневый сахар). Варите на медленном огне, пока не поднимется пенка. Снимите с огня, дайте постоять.',
+                'ШАГ 5: ПОДАЧА. Процедите в чашку. Подают с палочкой корицы. Этот кофе пьют вечером в кругу семьи.'
+            ] },
+            { id: 21, title: 'Кофе по-вьетнамски со сгущенкой', category: 'coffee', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=4636794e42e6689a82048a7ccfa4adfee841a519-12647631-images-thumbs&n=13', ingredients: ['Кофе — 20 г (вьетнамский, робуста)', 'Сгущенное молоко — 30 мл', 'Вода — 80 мл'], steps: [
+                'ШАГ 1: ФИЛЬТР. Вам нужен специальный вьетнамский фильтр — phin. Это металлический стаканчик с крышкой и прессом. Без него не получится.',
+                'ШАГ 2: СГУЩЕНКА. На дно чашки налейте сгущенное молоко. Во Вьетнаме его очень любят и кладут много.',
+                'ШАГ 3: ФИЛЬТР. Поставьте фильтр на чашку. Снимите верхнюю часть, насыпьте кофе (грубый помол, почти как для френч-пресса). Поставьте сверху пресс и прижмите (не слишком сильно).',
+                'ШАГ 4: ЗАЛИВКА. Налейте немного кипятка (95°C), подождите 30 секунд, чтобы кофе набух. Затем долейте остальную воду и закройте крышкой.',
+                'ШАГ 5: ОЖИДАНИЕ. Кофе будет медленно капать в чашку 4-5 минут. Потом снимите фильтр, перемешайте кофе со сгущенкой, добавьте лед — пьют горячим или холодным.'
+            ] },
+            { id: 22, title: 'Пряный тыквенный латте (Pumpkin Spice Latte)', category: 'coffee', time: '12 минут', image: 'https://avatars.mds.yandex.net/i?id=f99d7ab86b1c25f5f26c9fa070a5cd04bce44304-9181286-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Молоко — 200 мл', 'Тыквенное пюре — 30 г', 'Тыквенные специи (корица, имбирь, мускат, гвоздика)'], steps: [
+                'ШАГ 1: ТЫКВЕННОЕ ПЮРЕ. Можно купить готовое или сделать самим: запеките тыкву, пюрируйте блендером. Пюре должно быть густым, без комочков.',
+                'ШАГ 2: СМЕСЬ. В питчере смешайте молоко, тыквенное пюре и специи. Специи: 0.5 ч.л. корицы, щепотка имбиря, щепотка муската, 1 гвоздика (размолотая).',
+                'ШАГ 3: ВСПЕНИВАНИЕ. Взбейте смесь паровой трубкой до 65°C. Тыква может дать комочки, но это нормально.',
+                'ШАГ 4: ОСНОВА. На дно чашки налейте эспрессо.',
+                'ШАГ 5: ВЛИВАНИЕ. Влейте пряное молоко. Сверху посыпьте корицей. Это главный осенний напиток Starbucks.'
+            ] },
+            { id: 23, title: 'Соленая карамель латте', category: 'coffee', time: '9 минут', image: 'https://avatars.mds.yandex.net/i?id=b3cac01411b2a934d22b255da9677462494133a6-4233516-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Молоко — 200 мл', 'Сироп соленая карамель — 15 мл', 'Морская соль — щепотка'], steps: [
+                'ШАГ 1: СИРОП. Можно купить готовый сироп соленая карамель. Или сделать самим: растопите сахар до карамели, добавьте сливки и соль.',
+                'ШАГ 2: ОСНОВА. На дно чашки налейте сироп соленая карамель.',
+                'ШАГ 3: ЭСПРЕССО. Сварите эспрессо и влейте к сиропу, перемешайте.',
+                'ШАГ 4: МОЛОКО. Вспеньте молоко до густой пены (как для латте).',
+                'ШАГ 5: СБОРКА. Влейте молоко в чашку. Сверху посыпьте щепоткой крупной морской соли (флер де сель). Соль подчеркивает сладость карамели.'
+            ] },
+            { id: 24, title: 'Кокосовый латте', category: 'coffee', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=521ab1007a8a7f548337c36961ee786aad8119cf-9029997-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Кокосовое молоко — 200 мл', 'Кокосовый сироп — 10 мл (по желанию)'], steps: [
+                'ШАГ 1: КОКОСОВОЕ МОЛОКО. Берите несладкое кокосовое молоко для приготовления, не напиток. Оно жирнее и дает насыщенный вкус. Перед использованием взболтайте банку.',
+                'ШАГ 2: ВСПЕНИВАНИЕ. Кокосовое молоко взбивается хуже коровьего. Можно взбить блендером или капучинатором. Пены будет меньше, но это нормально.',
+                'ШАГ 3: ОСНОВА. В стакан налейте кокосовый сироп (если хотите слаще) и эспрессо.',
+                'ШАГ 4: МОЛОКО. Подогрейте кокосовое молоко (не кипятите!) и взбейте до легкой пенки.',
+                'ШАГ 5: ПОДАЧА. Влейте молоко в стакан. Посыпьте кокосовой стружкой. Подходит для веганов (если сироп веганский).'
+            ] },
+            { id: 25, title: 'Мятный мокко', category: 'coffee', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=bbe7f261972aeb9be0810a7844179eda9b82e116-12938945-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Молоко — 150 мл', 'Шоколад — 30 г', 'Мята свежая — 5-6 листиков'], steps: [
+                'ШАГ 1: МЯТА. Листья мяты нужно мелко порубить или растереть в ступке с сахаром, чтобы выделились эфирные масла.',
+                'ШАГ 2: ШОКОЛАД. Растопите шоколад на водяной бане. Добавьте в растопленный шоколад измельченную мяту, перемешайте, дайте настояться 2 минуты.',
+                'ШАГ 3: ОСНОВА. На дно чашки вылейте мятный шоколад. Влейте эспрессо, перемешайте.',
+                'ШАГ 4: МОЛОКО. Вспеньте молоко. Влейте в чашку.',
+                'ШАГ 5: УКРАШЕНИЕ. Сверху положите веточку мяты и посыпьте шоколадной крошкой. Очень праздничный напиток.'
+            ] },
+            { id: 26, title: 'Кофе с яичным желтком', category: 'coffee', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=6b96ca6bde5613b8a84791f73b8407e3fbecbad0-5827144-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Желток — 1 шт (свежий, от проверенного яйца)', 'Сахар — 1 ч.л.'], steps: [
+                'ШАГ 1: СТАРИННЫЙ РЕЦЕПТ. Так кофе пили в Европе 18 века. Яйцо делает кофе шелковистым и добавляет питательность.',
+                'ШАГ 2: ЖЕЛТОК. Отделите желток от белка. Белок не понадобится (можно использовать для безе). Желток должен быть комнатной температуры, не холодный.',
+                'ШАГ 3: РАСТИРАНИЕ. Растрите желток с сахаром добела. Смесь должна посветлеть и стать кремообразной.',
+                'ШАГ 4: КОФЕ. Сварите эспрессо. Тонкой струйкой влейте горячий кофе в желтковую смесь, постоянно и интенсивно помешивая венчиком. Если влить сразу весь, желток сварится кусочками.',
+                'ШАГ 5: ПОДАЧА. Перелейте обратно в чашку. Подавайте сразу. Вкус напоминает кофейный крем.'
+            ] },
+            { id: 27, title: 'Кофе по-ирландски с виски', category: 'coffee', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=46e8aa56f17e664dc4fdf6c97aebf5736f2edcde-5810594-images-thumbs&n=13', ingredients: ['Кофе черный — 150 мл', 'Виски — 50 мл', 'Сливки — 30 мл (33%)'], steps: [
+                'ШАГ 1: БОКАЛ. Обязательно возьмите бокал с ручкой или на ножке, чтобы не обжечь руки. Прогрейте бокал кипятком.',
+                'ШАГ 2: САХАР. Насыпьте на дно 1 ч.л. сахара. Лучше коричневого.',
+                'ШАГ 3: ВИСКИ. Налейте виски, размешайте с сахаром.',
+                'ШАГ 4: КОФЕ. Сварите крепкий кофе и влейте в бокал. Оставьте 1 см до края.',
+                'ШАГ 5: СЛИВКИ. Слегка взбейте сливки (до состояния жидкой сметаны). Аккуратно вылейте на обратную сторону ложки, чтобы сливки легли слоем. Не перемешивать.'
+            ] },
+            { id: 28, title: 'Цейлонский кофе с молоком', category: 'coffee', time: '7 минут', image: 'https://avatars.mds.yandex.net/i?id=f11857d2a68e7295517f4d0163a1e1ddd1a243b4-15406132-images-thumbs&n=13', ingredients: ['Кофе — 15 г', 'Молоко — 100 мл', 'Пряности (кардамон, корица)'], steps: [
+                'ШАГ 1: НАЗВАНИЕ. Цейлонский — значит шри-ланкийский. Там любят добавлять пряности в кофе.',
+                'ШАГ 2: ВАРКА. В турку положите кофе, раздавленные коробочки кардамона, палочку корицы. Залейте водой, варите как турецкий кофе.',
+                'ШАГ 3: ПРОЦЕЖИВАНИЕ. Процедите готовый кофе через мелкое сито, чтобы удалить пряности.',
+                'ШАГ 4: МОЛОКО. Подогрейте молоко отдельно, не кипятите.',
+                'ШАГ 5: СМЕШИВАНИЕ. Смешайте кофе с молоком в пропорции 2:1 (кофе:молоко). Добавьте сахар.'
+            ] },
+            { id: 29, title: 'Арабский кофе', category: 'coffee', time: '15 минут', image: 'https://avatars.mds.yandex.net/i?id=0b21d45c68195a4ab33218384a1f893fae13bf43-5336888-images-thumbs&n=13', ingredients: ['Кофе — 20 г (легкая обжарка)', 'Кардамон — 5-6 коробочек', 'Шафран — щепотка'], steps: [
+                'ШАГ 1: ТРАДИЦИЯ. В арабских странах кофе варят без сахара, но с большим количеством кардамона. Это знак гостеприимства.',
+                'ШАГ 2: ПОМОЛ. Арабы любят очень мелкий помол, почти как мука. Используют легкую обжарку, цвет кофе светлый.',
+                'ШАГ 3: КАРДАМОН. Раздавите коробочки кардамона, выньте черные зернышки, зеленую кожуру выбросьте. Нужны только зерна.',
+                'ШАГ 4: ВАРКА. В турку положите кофе, кардамон, шафран. Залейте водой. Варите до поднятия пенки. Снимите, дайте осесть. Повторите 3 раза.',
+                'ШАГ 5: ПОДАЧА. Разливают в маленькие чашки без ручек (финджаны) по чуть-чуть. Пьют маленькими глотками.'
+            ] },
+            { id: 30, title: 'Кофе с лимоном и медом', category: 'coffee', time: '6 минут', image: 'https://avatars.mds.yandex.net/i?id=8bd2661fd947e1565e4ce29bb459e4db34af932d-10639406-images-thumbs&n=13', ingredients: ['Кофе — 200 мл', 'Лимон — 2 кружочка', 'Мед — 1 ч.л.'], steps: [
+                'ШАГ 1: ПРИНЦИП. Лимон в кофе — на любителя, но сочетание работает: кислота лимона оттеняет горечь кофе.',
+                'ШАГ 2: КОФЕ. Сварите черный кофе любым способом (турка, френч-пресс, кофемашина).',
+                'ШАГ 3: ЧАШКА. В чашку положите кружочки лимона. Залейте горячим кофе.',
+                'ШАГ 4: МЕД. Дайте кофе немного остыть (до 60°C), иначе мед потеряет полезные свойства. Добавьте мед, размешайте.',
+                'ШАГ 5: ПОДАЧА. Можно добавить палочку корицы. Хорошо пить при простуде.'
+            ] },
+            { id: 31, title: 'Пряный масала кофе', category: 'coffee', time: '12 минут', image: 'https://avatars.mds.yandex.net/i?id=c6f7a133eedffc58b27d233bcb43aab405291a5f-5232021-images-thumbs&n=13', ingredients: ['Кофе — 15 г', 'Молоко — 150 мл', 'Пряности (кардамон, корица, имбирь, гвоздика)'], steps: [
+                'ШАГ 1: АНАЛОГ ЧАЯ. Это кофейная версия масала-чая. Пряности те же, но основа кофейная.',
+                'ШАГ 2: ПРЯНОСТИ. В кастрюльку положите: 2 коробочки кардамона (зерна), палочку корицы, кусочек имбиря (1 см), 2 гвоздики.',
+                'ШАГ 3: МОЛОКО. Залейте пряности молоком и водой (100 мл молока + 100 мл воды). Доведите до кипения, варите 5 минут.',
+                'ШАГ 4: КОФЕ. Добавьте молотый кофе. Варите еще 2 минуты на маленьком огне.',
+                'ШАГ 5: ПРОЦЕЖИВАНИЕ. Процедите через сито. Добавьте сахар. Подавайте горячим.'
+            ] },
+            { id: 32, title: 'Апельсиновый американо', category: 'coffee', time: '6 минут', image: 'https://avatars.mds.yandex.net/i?id=2a0e14e8a9235e5136af00d23c7cd1869ce97049-5137607-images-thumbs&n=13', ingredients: ['Эспрессо — 60 мл', 'Вода — 100 мл', 'Апельсин — 2 дольки'], steps: [
+                'ШАГ 1: АМЕРИКАНО. Сварите двойной эспрессо. Американо — это эспрессо, разбавленный водой.',
+                'ШАГ 2: ВОДА. В стакан налейте горячую воду (85°C).',
+                'ШАГ 3: АПЕЛЬСИН. Положите в воду дольки апельсина. Можно выжать сок из одной дольки.',
+                'ШАГ 4: КОФЕ. Влейте эспрессо в воду с апельсином.',
+                'ШАГ 5: УКРАШЕНИЕ. Украсьте кружочком апельсина на край стакана. Свежий и бодрящий напиток.'
+            ] },
+            { id: 33, title: 'Кофе с бананом', category: 'coffee', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=fa717f85f24caaba5c856c9140f8a4213c5c601c-5235884-images-thumbs&n=13', ingredients: ['Кофе — 200 мл', 'Банан — 1 шт (спелый)', 'Молоко — 50 мл'], steps: [
+                'ШАГ 1: БАНАН. Возьмите очень спелый банан, с коричневыми точками. Чем спелее, тем слаще.',
+                'ШАГ 2: ПЮРЕ. В блендере взбейте банан с молоком до однородного пюре. Если блендер слабый, сначала разомните банан вилкой.',
+                'ШАГ 3: КОФЕ. Сварите черный кофе.',
+                'ШАГ 4: СМЕШИВАНИЕ. В стакан налейте кофе, затем добавьте банановое пюре. Перемешайте.',
+                'ШАГ 5: ПОДАЧА. Можно добавить лед. Получается сытный, почти смузи-напиток. Отличный завтрак.'
+            ] },
+            { id: 34, title: 'Кардамонный эспрессо', category: 'coffee', time: '6 минут', image: 'https://avatars.mds.yandex.net/i?id=14c2f3479023e5807cba12e344daf02b9a68c4ce-5877064-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Кардамон — 2 коробочки'], steps: [
+                'ШАГ 1: КАРДАМОН. Раздавите коробочки кардамона ножом, извлеките черные семена. Зеленую кожуру выбросьте.',
+                'ШАГ 2: ПОМОЛ. Смешайте кофейные зерна с семенами кардамона и смелите вместе. Или добавьте молотый кардамон в уже молотый кофе.',
+                'ШАГ 3: ЭСПРЕССО. Приготовьте эспрессо как обычно.',
+                'ШАГ 4: АРОМАТ. Кардамон даст пряный, слегка лимонный аромат.',
+                'ШАГ 5: ПОДАЧА. Подавайте в маленькой чашке. Сахар не нужен.'
+            ] },
+            { id: 35, title: 'Шоколадный мокко', category: 'coffee', time: '9 минут', image: 'https://avatars.mds.yandex.net/i?id=4ee53e1f4d5e21a54f5e271eda7403f1f2587f7a-9271022-images-thumbs&n=13', ingredients: ['Эспрессо — 40 мл', 'Молоко — 150 мл', 'Шоколадный сироп — 20 мл'], steps: [
+                'ШАГ 1: СИРОП. Можно использовать готовый сироп или сделать самим: смешать какао с сахаром и водой, проварить.',
+                'ШАГ 2: ОСНОВА. На дно чашки налейте шоколадный сироп.',
+                'ШАГ 3: ЭСПРЕССО. Сварите эспрессо и влейте к сиропу, перемешайте.',
+                'ШАГ 4: МОЛОКО. Вспеньте молоко.',
+                'ШАГ 5: СБОРКА. Влейте молоко в чашку. Сверху можно добавить взбитые сливки и полить шоколадом. Десертный напиток.'
+            ] }
+        ];
+
+        // Tea Recipes (36-70)
+        const teaRecipes = [
+            { id: 36, title: 'Черный чай классический', category: 'tea', time: '5 минут', image: 'https://avatars.mds.yandex.net/i?id=5a3e22b34d5edfd860ef557cd2a1cce7e1913b73-2816445-images-thumbs&n=13', ingredients: ['Чай черный — 1 ч.л. (с горкой)', 'Вода — 200 мл (фильтрованная)'], steps: [
+                'ШАГ 1: ВОДА. Вскипятите свежую воду. Важно: не используйте воду, которая уже кипела — в ней мало кислорода, чай будет "плоским". Вода должна быть 95°C (только закипела).',
+                'ШАГ 2: ПРОГРЕВ ПОСУДЫ. Ополосните заварочный чайник кипятком. Это нужно, чтобы стенки забрали тепло, и температура заваривания не упала резко.',
+                'ШАГ 3: ЗАСЫПКА. Насыпьте заварку из расчета 1 чайная ложка на чашку (200 мл). Для заварника на 2 чашки — 2 ложки.',
+                'ШАГ 4: ЗАЛИВКА. Залейте воду, закройте крышкой. Сверху можно накрыть полотенцем или специальной грелкой — так чай лучше настоится.',
+                'ШАГ 5: ВРЕМЯ. Черный чай настаивается 3-5 минут. Если любите крепче, держите дольше, но не перестаивайте — появится горечь. Разлейте через ситечко.'
+            ] },
+            { id: 37, title: 'Зеленый чай', category: 'tea', time: '4 минуты', image: 'https://avatars.mds.yandex.net/i?id=95aa65b5beba78c6d57afae502ee88b29ea5a590-5205562-images-thumbs&n=13', ingredients: ['Чай зеленый — 1 ч.л.', 'Вода — 200 мл'], steps: [
+                'ШАГ 1: ТЕМПЕРАТУРА. Зеленый чай нельзя заливать кипятком — будет горчить и потеряет пользу. Вода должна быть 75-80°C. Если нет термометра, дайте кипятку постоять 5-7 минут после закипания.',
+                'ШАГ 2: ПОСУДА. Прогрейте чайник. Засыпьте чай. Обратите внимание: зеленый чай может быть скручен в шарики, жемчужины, иголки — это нормально.',
+                'ШАГ 3: ЗАЛИВКА. Залейте водой, закройте крышкой. Не укутывайте!',
+                'ШАГ 4: ВРЕМЯ. Настаивайте 2-3 минуты. Первую заварку иногда сливают через 10 секунд, чтобы "пробудить" лист, но это для элитных сортов.',
+                'ШАГ 5: РАЗЛИВ. Разлейте по чашкам. Зеленый чай можно заваривать повторно 2-3 раза, каждый раз увеличивая время на 30 секунд.'
+            ] },
+            { id: 38, title: 'Масала чай', category: 'tea', time: '15 минут', image: 'https://avatars.mds.yandex.net/i?id=ad4803c69436702be8abae6b2d8ac322f8981b87-4821199-images-thumbs&n=13', ingredients: ['Чай черный — 2 ч.л.', 'Молоко — 200 мл', 'Вода — 200 мл', 'Пряности: кардамон, корица, имбирь, гвоздика, перец'], steps: [
+                'ШАГ 1: ПРЯНОСТИ. В Индии у каждого свой рецепт. Базовый набор: 2 коробочки кардамона (семена), палочка корицы, кусочек имбиря (1 см), 2 гвоздики, 2 горошины черного перца. Пряности лучше слегка раздавить в ступке.',
+                'ШАГ 2: ВАРКА. В кастрюльку налейте воду и молоко. Добавьте пряности. Доведите до кипения, варите 5 минут на медленном огне.',
+                'ШАГ 3: ЧАЙ. Добавьте черный чай и сахар (обычно 2 ч.л.). Варите еще 3-5 минут, пока чай не станет насыщенного цвета.',
+                'ШАГ 4: ПРОЦЕЖИВАНИЕ. Процедите через ситечко в чашки, пряности выбросьте.',
+                'ШАГ 5: ПОДАЧА. Пьют горячим, часто с печеньем или сладостями.'
+            ] },
+            { id: 39, title: 'Мятный чай', category: 'tea', time: '7 минут', image: 'https://avatars.mds.yandex.net/i?id=de57bf4d8665e7d87283dd23cfc169b13f7f0764-11389740-images-thumbs&n=13', ingredients: ['Мята свежая — 5-6 веточек', 'Чай зеленый — 1 ч.л.', 'Вода — 500 мл'], steps: [
+                'ШАГ 1: МЯТА. Промойте мяту. Лучше использовать свежую, сушеная дает менее яркий аромат. Можно взять мяту перечную или кудрявую.',
+                'ШАГ 2: ЗАВАРНИК. Положите в заварник зеленый чай и веточки мяты. Мяту можно порвать руками, чтобы пошло масло.',
+                'ШАГ 3: ВОДА. Залейте водой 80°C.',
+                'ШАГ 4: НАСТАИВАНИЕ. Закройте крышкой, настаивайте 5 минут.',
+                'ШАГ 5: ПОДАЧА. Подавайте с медом и лимоном. Очень освежает летом и успокаивает вечером.'
+            ] },
+            { id: 40, title: 'Имбирный чай', category: 'tea', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=d67cd06bd9e8173d64f12a2eaf06d1384e26f7dd-5231985-images-thumbs&n=13', ingredients: ['Имбирь свежий — 3 см', 'Лимон — 2 дольки', 'Мед — 1 ч.л.'], steps: [
+                'ШАГ 1: ИМБИРЬ. Очистите имбирь от кожуры (скоблите ложкой, так удобнее). Натрите на мелкой терке или нарежьте тонкими слайсами. Чем тоньше, тем быстрее заварится.',
+                'ШАГ 2: ЗАЛИВКА. Положите имбирь в чашку или заварник. Залейте кипятком.',
+                'ШАГ 3: ЛИМОН. Добавьте дольки лимона. Можно сразу выжать сок.',
+                'ШАГ 4: НАСТАИВАНИЕ. Накройте блюдцем и настаивайте 10 минут. Чем дольше, тем острее.',
+                'ШАГ 5: МЕД. Когда чай немного остынет (до 60°C), добавьте мед. Пейте теплым при простуде.'
+            ] },
+            { id: 41, title: 'Чай с бергамотом (Эрл Грей)', category: 'tea', time: '5 минут', image: 'https://avatars.mds.yandex.net/i?id=069b90ae1ce1cf65cb3a12e6c49ebbfad712bc2e-5858772-images-thumbs&n=13', ingredients: ['Чай Эрл Грей — 1 ч.л.', 'Вода — 200 мл'], steps: [
+                'ШАГ 1: ЧТО ЭТО. Эрл Грей — черный чай, ароматизированный маслом бергамота (цитрусовое растение).',
+                'ШАГ 2: ВОДА. Вскипятите воду до 95°C.',
+                'ШАГ 3: ЗАВАРКА. Засыпьте чай в прогретый чайник.',
+                'ШАГ 4: НАСТАИВАНИЕ. Залейте водой, настаивайте 4 минуты.',
+                'ШАГ 5: ПОДАЧА. Традиционно подают с лимоном. Можно с молоком, но классический вариант — без.'
+            ] },
+            { id: 42, title: 'Ягодный чай', category: 'tea', time: '12 минут', image: 'https://avatars.mds.yandex.net/i?id=32fb8380040e98bc700567d51f3a66dab876dfc1-4968891-images-thumbs&n=13', ingredients: ['Сушеные ягоды (малина, смородина, шиповник) — 2 ст.л.', 'Мед — по вкусу'], steps: [
+                'ШАГ 1: СБОР. Возьмите смесь сушеных ягод. Можно купить готовую или смешать самим. Шиповник нужно раздавить, чтобы он отдал вкус.',
+                'ШАГ 2: ЗАЛИВКА. Положите ягоды в заварник или термос. Залейте кипятком.',
+                'ШАГ 3: НАСТАИВАНИЕ. Закройте крышкой. Настаивайте 10-15 минут. В термосе можно дольше.',
+                'ШАГ 4: ПРОЦЕЖИВАНИЕ. Процедите через сито, чтобы ягоды не плавали.',
+                'ШАГ 5: ПОДАЧА. Добавьте мед. Это витаминный напиток, особенно полезен зимой.'
+            ] },
+            { id: 43, title: 'Матча', category: 'tea', time: '5 минут', image: 'https://avatars.mds.yandex.net/i?id=44b7edb1bb1ee5cb498abec9d7b3a509189474a9-5887690-images-thumbs&n=13', ingredients: ['Порошок матча — 2 г (1 ч.л. без горки)', 'Вода — 80 мл (70-80°C)'], steps: [
+                'ШАГ 1: ОСОБЕННОСТЬ. Матча — это японский зеленый чай, перетертый в порошок. Его не заваривают, а взбивают. Пьют целиком, вместе с чаинками.',
+                'ШАГ 2: ПРОСЕИВАНИЕ. Просейте порошок матча через мелкое сито в чашку (тяван). Это нужно, чтобы не было комочков.',
+                'ШАГ 3: ВОДА. Налейте немного воды (70-80°C). Не кипяток!',
+                'ШАГ 4: ВЗБИВАНИЕ. Специальным бамбуковым венчиком (тясен) взбивайте быстрыми движениями "змейкой" или буквой W. Должна появиться мелкая пенка.',
+                'ШАГ 5: ДОЛИВ. Долейте остальную воду. Пьют сразу, маленькими глотками.'
+            ] },
+            { id: 44, title: 'Пуэр', category: 'tea', time: '7 минут', image: 'https://avatars.mds.yandex.net/i?id=7f9f45a0ba4fb11b5998bfca56a99e942b1f4d87-3794023-images-thumbs&n=13', ingredients: ['Пуэр — 5 г (прессованный или рассыпной)', 'Вода — 200 мл (95°C)'], steps: [
+                'ШАГ 1: ОСОБЕННОСТЬ. Пуэр — ферментированный чай. Бывает зеленый (шен) и черный (шу). Шу имеет земляной, глубокий вкус.',
+                'ШАГ 2: ПРОМЫВКА. Если пуэр прессованный, отделите кусочек. Положите в чайник, залейте кипятком на 10 секунд и сразу слейте. Это смывает пыль и "пробуждает" чай.',
+                'ШАГ 3: ЗАВАРКА. Залейте снова кипятком.',
+                'ШАГ 4: ВРЕМЯ. Настаивайте 2-3 минуты. Можно заваривать многократно, увеличивая время.',
+                'ШАГ 5: ВКУС. У пуэра специфический вкус — землистый, ореховый, сладковатый. Пьют без сахара.'
+            ] },
+            { id: 45, title: 'Улун (Оолонг)', category: 'tea', time: '6 минут', image: 'https://avatars.mds.yandex.net/i?id=64f3f02d0db2268f91fa6578d0e2b7cd3d7693d7-4577390-images-thumbs&n=13', ingredients: ['Улун — 5 г', 'Вода — 200 мл (85-90°C)'], steps: [
+                'ШАГ 1: ОСОБЕННОСТЬ. Улун — полуферментированный чай. Бывает слабоферментированный (молочный, цветочный) и сильноферментированный (темный, с шоколадными нотами).',
+                'ШАГ 2: ПОСУДА. Используйте глиняный чайник или гайвань. Прогрейте посуду.',
+                'ШАГ 3: ПРОМЫВКА. Засыпьте улун, залейте водой на 10 секунд, слейте. Это раскрывает лист.',
+                'ШАГ 4: ЗАВАРКА. Залейте водой. Настаивайте 1-2 минуты (первая заварка), затем можно заваривать еще 5-7 раз, каждый раз увеличивая время на 30 секунд.',
+                'ШАГ 5: ВКУС. Улун имеет сложный вкус, который меняется от заварки к заварке. Пьют без сахара.'
+            ] },
+            { id: 46, title: 'Ромашковый чай', category: 'tea', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=474b0f3834f57bea93e8e61af6a48d49ef2d86d7-11018127-images-thumbs&n=13', ingredients: ['Ромашка сушеная — 2 ч.л.', 'Вода — 250 мл'], steps: [
+                'ШАГ 1: РОМАШКА. Возьмите сухие цветки ромашки. Лучше в аптеке, но не в пакетиках, а россыпью.',
+                'ШАГ 2: ЗАЛИВКА. Положите ромашку в чашку или заварник. Залейте кипятком.',
+                'ШАГ 3: НАСТАИВАНИЕ. Накройте блюдцем и настаивайте 5-7 минут. Чем дольше, тем насыщеннее.',
+                'ШАГ 4: ПРОЦЕЖИВАНИЕ. Процедите через ситечко.',
+                'ШАГ 5: ПОДАЧА. Можно добавить мед. Ромашка успокаивает, помогает при простуде и бессоннице.'
+            ] },
+            { id: 47, title: 'Каркаде', category: 'tea', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=a97db6586d3ac6ef00c14bd492dddee33725c6cf-5147471-images-thumbs&n=13', ingredients: ['Гибискус (суданская роза) — 2 ст.л.', 'Вода — 500 мл', 'Сахар — по вкусу'], steps: [
+                'ШАГ 1: ОСОБЕННОСТЬ. Каркаде — напиток из цветков гибискуса. У него ярко-красный цвет и кисловатый вкус.',
+                'ШАГ 2: ЗАЛИВКА. Залейте лепестки гибискуса кипятком.',
+                'ШАГ 3: НАСТАИВАНИЕ. Настаивайте 8-10 минут. Можно дольше, тогда цвет станет насыщеннее.',
+                'ШАГ 4: САХАР. Добавьте сахар по вкусу. Каркаде без сахара кислый.',
+                'ШАГ 5: ПОДАЧА. Можно пить горячим, а можно охладить и подавать со льдом — отличный лимонад.'
+            ] },
+            { id: 48, title: 'Чай с жасмином', category: 'tea', time: '5 минут', image: 'https://avatars.mds.yandex.net/i?id=4a6eed5037cb5b08dae19f22b45b14b05df85dc7-4534759-images-thumbs&n=13', ingredients: ['Чай с жасмином — 2 ч.л.', 'Вода — 250 мл (80°C)'], steps: [
+                'ШАГ 1: ОСОБЕННОСТЬ. Жасминовый чай — обычно зеленый чай, ароматизированный цветками жасмина. Иногда лепестки жасмина присутствуют в заварке.',
+                'ШАГ 2: ВОДА. Вода должна быть 80°C. Кипяток убьет нежный аромат жасмина.',
+                'ШАГ 3: ЗАВАРКА. Засыпьте чай в прогретый заварник.',
+                'ШАГ 4: ВРЕМЯ. Настаивайте 3 минуты. Не передержите, иначе появится горечь.',
+                'ШАГ 5: ПОДАЧА. Пьют без сахара, чтобы чувствовать аромат.'
+            ] },
+            { id: 49, title: 'Травяной сбор (Иван-чай, чабрец, душица)', category: 'tea', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=b3ee0c3805d532c27232dd9669675e42219678d5-10147998-images-thumbs&n=13', ingredients: ['Иван-чай — 1 ст.л.', 'Чабрец — 1 ч.л.', 'Душица — 1 ч.л.'], steps: [
+                'ШАГ 1: СБОР. Смешайте все травы. Можно взять в равных частях. Иван-чай дает сладость, чабрец — аромат, душица — пряность.',
+                'ШАГ 2: ЗАВАРНИК. Засыпьте 2 ст.л. сбора в заварник.',
+                'ШАГ 3: ЗАЛИВКА. Залейте кипятком (500 мл).',
+                'ШАГ 4: НАСТАИВАНИЕ. Настаивайте 10 минут под крышкой.',
+                'ШАГ 5: ПОДАЧА. Подавайте с медом. Очень ароматный и полезный чай.'
+            ] },
+            { id: 50, title: 'Чай с лимоном и медом', category: 'tea', time: '5 минут', image: 'https://avatars.mds.yandex.net/i?id=8a00bc3f41d76444ed34f53a8c7642841bb89a3d-5232084-images-thumbs&n=13', ingredients: ['Чай черный — 1 ч.л.', 'Лимон — 2 дольки', 'Мед — 1 ч.л.'], steps: [
+                'ШАГ 1: ЗАВАРКА. Заварите черный чай (3-4 минуты).',
+                'ШАГ 2: ЛИМОН. В чашку положите дольки лимона. Можно выжать сок.',
+                'ШАГ 3: ЧАЙ. Налейте чай в чашку.',
+                'ШАГ 4: МЕД. Дайте чаю немного остыть, чтобы мед не потерял полезные свойства (не выше 60°C). Добавьте мед.',
+                'ШАГ 5: ПЕРЕМЕШИВАНИЕ. Размешайте и пейте. Классика.'
+            ] },
+            { id: 51, title: 'Тайский чай', category: 'tea', time: '12 минут', image: 'https://avatars.mds.yandex.net/i?id=bc1976046ea645cbe9535519c639cebf6db76a37-12446123-images-thumbs&n=13', ingredients: ['Чай (ассам или тайская смесь) — 2 ст.л.', 'Сгущенное молоко — 2 ст.л.', 'Молоко — 100 мл', 'Пряности (анис, кардамон)'], steps: [
+                'ШАГ 1: ОСОБЕННОСТЬ. В Таиланде этот чай продают на улицах. Он ярко-оранжевого цвета из-за добавления красителей, но дома можно без них.',
+                'ШАГ 2: ЗАВАРКА. Заварите крепкий черный чай (лучше ассам) с анисом и кардамоном. Настаивайте 5 минут.',
+                'ШАГ 3: ПРОЦЕЖИВАНИЕ. Процедите чай. Добавьте сгущенное молоко, перемешайте.',
+                'ШАГ 4: ЛЕД. Наполните стакан льдом.',
+                'ШАГ 5: ЗАЛИВКА. Залейте лед чаем, сверху долейте обычного молока. Пьют через трубочку.'
+            ] },
+            { id: 52, title: 'Чай с облепихой и имбирем', category: 'tea', time: '15 минут', image: 'https://avatars.mds.yandex.net/i?id=747ce3c214286b20aa80891c798b2294925cc276-10533404-images-thumbs&n=13', ingredients: ['Облепиха — 100 г (свежая или замороженная)', 'Имбирь — 2 см', 'Мед — по вкусу'], steps: [
+                'ШАГ 1: ОБЛЕПИХА. Если облепиха свежая, разомните ее толкушкой. Если замороженная, предварительно разморозьте и тоже разомните.',
+                'ШАГ 2: ИМБИРЬ. Натрите имбирь на мелкой терке.',
+                'ШАГ 3: СМЕШИВАНИЕ. Положите облепиху и имбирь в заварник или термос.',
+                'ШАГ 4: ЗАЛИВКА. Залейте кипятком (500 мл). Настаивайте 10 минут.',
+                'ШАГ 5: ПОДАЧА. Процедите через сито (или пейте с мякотью). Добавьте мед. Очень витаминный.'
+            ] },
+            { id: 53, title: 'Чай с чабрецом', category: 'tea', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=4f1568b844ee22fe759a27eeef597cc62b5f113b-10208766-images-thumbs&n=13', ingredients: ['Чабрец (тимьян) — 2 веточки', 'Чай черный — 1 ч.л.', 'Мед — по вкусу'], steps: [
+                'ШАГ 1: ЧАБРЕЦ. Положите в заварник веточки чабреца (свежего или сухого).',
+                'ШАГ 2: ЧАЙ. Добавьте черный чай.',
+                'ШАГ 3: ЗАЛИВКА. Залейте кипятком (300 мл).',
+                'ШАГ 4: НАСТАИВАНИЕ. Настаивайте 5-7 минут.',
+                'ШАГ 5: ПОДАЧА. Процедите, добавьте мед. Чабрец помогает при кашле.'
+            ] },
+            { id: 54, title: 'Клюквенный чай с апельсином', category: 'tea', time: '12 минут', image: 'https://avatars.mds.yandex.net/i?id=2ec77eb89afdfec573a7cb07c30cfcf987b72608-4769521-images-thumbs&n=13', ingredients: ['Клюква — 100 г', 'Апельсин — 1 шт', 'Корица — 1 палочка'], steps: [
+                'ШАГ 1: КЛЮКВА. Разомните клюкву (можно замороженную) толкушкой.',
+                'ШАГ 2: АПЕЛЬСИН. Нарежьте апельсин кружками или дольками.',
+                'ШАГ 3: СБОР. Положите клюкву, апельсин и палочку корицы в кастрюльку.',
+                'ШАГ 4: ВАРКА. Залейте водой (500 мл), доведите до кипения, варите 5 минут.',
+                'ШАГ 5: ПОДАЧА. Процедите, добавьте мед или сахар. Пейте горячим.'
+            ] },
+            { id: 55, title: 'Лавандовый чай', category: 'tea', time: '7 минут', image: 'https://avatars.mds.yandex.net/i?id=133ec7f01ad0302f514567ffc3fdb793393063d7-4378742-images-thumbs&n=13', ingredients: ['Лаванда сушеная — 1 ч.л.', 'Чай зеленый — 1 ч.л.'], steps: [
+                'ШАГ 1: ЛАВАНДА. Используйте только кулинарную лаванду, не ту, что для саше — она может быть с ароматизаторами.',
+                'ШАГ 2: СМЕСЬ. Смешайте зеленый чай с лавандой.',
+                'ШАГ 3: ЗАЛИВКА. Залейте водой 80°C.',
+                'ШАГ 4: ВРЕМЯ. Настаивайте 3 минуты.',
+                'ШАГ 5: ПОДАЧА. Пьют без сахара. Очень успокаивающий чай.'
+            ] },
+            { id: 56, title: 'Чай с корицей и яблоком', category: 'tea', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=e9ff7feab1c85111db54ebe48e7e5e7b20d50483-12633068-images-thumbs&n=13', ingredients: ['Чай черный — 1 ст.л.', 'Яблоко — 1 шт', 'Корица — 1 палочка'], steps: [
+                'ШАГ 1: ЯБЛОКО. Нарежьте яблоко тонкими дольками. Можно с кожурой.',
+                'ШАГ 2: ЗАВАРНИК. Положите в заварник чай, яблоко и палочку корицы.',
+                'ШАГ 3: ЗАЛИВКА. Залейте кипятком (500 мл).',
+                'ШАГ 4: НАСТАИВАНИЕ. Настаивайте 7 минут.',
+                'ШАГ 5: ПОДАЧА. Разлейте по чашкам. Можно добавить мед. Осенний ароматный чай.'
+            ] },
+            { id: 57, title: 'Чай с мелиссой', category: 'tea', time: '6 минут', image: 'https://avatars.mds.yandex.net/i?id=bb99b7a07cae2335fc0f90293a247cef899f289a-4552813-images-thumbs&n=13', ingredients: ['Мелисса свежая — 4-5 веточек', 'Мята — 2 веточки', 'Мед — по вкусу'], steps: [
+                'ШАГ 1: ТРАВЫ. Промойте мелиссу и мяту. Мелисса имеет лимонный аромат, в отличие от мяты.',
+                'ШАГ 2: ЗАВАРНИК. Положите травы в заварник.',
+                'ШАГ 3: ЗАЛИВКА. Залейте кипятком (500 мл).',
+                'ШАГ 4: НАСТАИВАНИЕ. Настаивайте 5 минут.',
+                'ШАГ 5: ПОДАЧА. Добавьте мед. Успокаивает, помогает при стрессе.'
+            ] },
+            { id: 58, title: 'Чай с мятой и лимоном', category: 'tea', time: '7 минут', image: 'https://avatars.mds.yandex.net/i?id=fbd3044b4539b3139502f75a0e79d085461be495-5337299-images-thumbs&n=13', ingredients: ['Мята — 5 веточек', 'Лимон — 2 дольки', 'Мед'], steps: [
+                'ШАГ 1: МЯТА. Положите мяту в заварник. Можно порвать руками.',
+                'ШАГ 2: ЗАЛИВКА. Залейте кипятком. Настаивайте 5 минут.',
+                'ШАГ 3: ЛИМОН. В чашку положите лимон.',
+                'ШАГ 4: НАЛИВ. Налейте мятный настой в чашку.',
+                'ШАГ 5: МЕД. Добавьте мед. Классический освежающий напиток.'
+            ] },
+            { id: 59, title: 'Индийский чай с пряностями', category: 'tea', time: '12 минут', image: 'https://avatars.mds.yandex.net/i?id=b1ebeaedde0cca2ae079f9e7776785772f2f0066-5504090-images-thumbs&n=13', ingredients: ['Чай черный — 2 ч.л.', 'Кардамон — 2 коробочки', 'Имбирь — 1 см', 'Гвоздика — 2 шт'], steps: [
+                'ШАГ 1: ПРЯНОСТИ. Раздавите кардамон, имбирь натрите, гвоздику оставьте целиком.',
+                'ШАГ 2: ВАРКА. В кастрюльку налейте 200 мл воды и 200 мл молока. Добавьте пряности. Доведите до кипения, варите 5 минут.',
+                'ШАГ 3: ЧАЙ. Добавьте чай и сахар. Варите еще 3 минуты.',
+                'ШАГ 4: ПРОЦЕЖИВАНИЕ. Процедите.',
+                'ШАГ 5: ПОДАЧА. Подавайте горячим.'
+            ] },
+            { id: 60, title: 'Чай с молоком и специями', category: 'tea', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=47d4080784e84d66d8602d2223ac958476f2b3a0-5351557-images-thumbs&n=13', ingredients: ['Чай черный — 2 ч.л.', 'Молоко — 200 мл', 'Корица, мускат'], steps: [
+                'ШАГ 1: ЗАВАРКА. Заварите крепкий черный чай в 200 мл воды. Настаивайте 5 минут.',
+                'ШАГ 2: МОЛОКО. В отдельной кастрюльке подогрейте молоко с палочкой корицы и щепоткой муската. Не кипятите.',
+                'ШАГ 3: ПРОЦЕЖИВАНИЕ. Процедите чай и молоко (пряности уберите).',
+                'ШАГ 4: СМЕШИВАНИЕ. В чашку налейте сначала чай, потом молоко. Соотношение 1:1.',
+                'ШАГ 5: САХАР. Добавьте сахар по вкусу.'
+            ] },
+            { id: 61, title: 'Согревающий чай с малиной', category: 'tea', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=7b17fd77083225efea0db888276c92a61655fddb-4567603-images-thumbs&n=13', ingredients: ['Малина (свежая или замороженная) — 100 г', 'Имбирь — 1 см', 'Мед'], steps: [
+                'ШАГ 1: МАЛИНА. Разомните малину толкушкой.',
+                'ШАГ 2: ИМБИРЬ. Натрите имбирь.',
+                'ШАГ 3: ЗАЛИВКА. Положите в чашку малину и имбирь. Залейте кипятком.',
+                'ШАГ 4: НАСТАИВАНИЕ. Накройте блюдцем, настаивайте 5 минут.',
+                'ШАГ 5: МЕД. Добавьте мед. Пейте при простуде.'
+            ] },
+            { id: 62, title: 'Чай с кардамоном', category: 'tea', time: '6 минут', image: 'https://avatars.mds.yandex.net/i?id=a310846f114d30d6fdcd0e26d6d4a7cd9887449f-16117799-images-thumbs&n=13', ingredients: ['Чай зеленый — 1 ч.л.', 'Кардамон — 3 коробочки'], steps: [
+                'ШАГ 1: КАРДАМОН. Раздавите коробочки кардамона, извлеките семена.',
+                'ШАГ 2: СМЕСЬ. Смешайте зеленый чай с семенами кардамона.',
+                'ШАГ 3: ВОДА. Залейте водой 80°C.',
+                'ШАГ 4: ВРЕМЯ. Настаивайте 3 минуты.',
+                'ШАГ 5: ПОДАЧА. Пьют без сахара. Кардамон добавляет чаю лимонно-пряный оттенок.'
+            ] },
+            { id: 63, title: 'Чай с анисом и фенхелем', category: 'tea', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=e8bc6e37e5aa661b6e807008e4b06a023dc57c58-13212321-images-thumbs&n=13', ingredients: ['Анис (семена) — 1 ч.л.', 'Фенхель (семена) — 1 ч.л.', 'Мята — 2 веточки'], steps: [
+                'ШАГ 1: СЕМЕНА. Слегка раздавите семена аниса и фенхеля в ступке.',
+                'ШАГ 2: ЗАВАРНИК. Положите семена и мяту в заварник.',
+                'ШАГ 3: ЗАЛИВКА. Залейте кипятком (500 мл).',
+                'ШАГ 4: НАСТАИВАНИЕ. Настаивайте 8 минут.',
+                'ШАГ 5: ПРОЦЕЖИВАНИЕ. Процедите. Полезно для пищеварения.'
+            ] },
+            { id: 64, title: 'Монастырский чай (сбор трав)', category: 'tea', time: '15 минут', image: 'https://avatars.mds.yandex.net/i?id=84f59a254d13cdaabd26b72e891f71bc99f2cb5b-4079652-images-thumbs&n=13', ingredients: ['Душица — 1 ст.л.', 'Зверобой — 1 ст.л.', 'Шиповник — 1 ст.л.', 'Мята — 1 ст.л.'], steps: [
+                'ШАГ 1: СБОР. Смешайте все травы. Шиповник предварительно раздавите.',
+                'ШАГ 2: ТЕРМОС. Насыпьте 2 ст.л. сбора в термос.',
+                'ШАГ 3: ЗАЛИВКА. Залейте кипятком (1 литр).',
+                'ШАГ 4: НАСТАИВАНИЕ. Закройте термос, настаивайте 1-2 часа.',
+                'ШАГ 5: ПОДАЧА. Пейте как общеукрепляющее.'
+            ] },
+            { id: 65, title: 'Чай с имбирем и облепихой', category: 'tea', time: '12 минут', image: 'https://avatars.mds.yandex.net/i?id=107e9cdf0d430913018952dfafb515b8_sr-10339875-images-thumbs&n=13', ingredients: ['Имбирь — 2 см', 'Облепиха — 100 г', 'Мед'], steps: [
+                'ШАГ 1: ПЮРЕ. Разомните облепиху, имбирь натрите.',
+                'ШАГ 2: ЗАЛИВКА. Залейте смесь кипятком (500 мл).',
+                'ШАГ 3: НАСТАИВАНИЕ. Настаивайте 10 минут.',
+                'ШАГ 4: ПРОЦЕЖИВАНИЕ. Процедите, если не любите мякоть.',
+                'ШАГ 5: МЕД. Добавьте мед. Бомба с витамином С.'
+            ] },
+            { id: 66, title: 'Чай с душицей и зверобоем', category: 'tea', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=c9e6765915d2b6f2ccd1dabe6264f50c18cddde4-12890014-images-thumbs&n=13', ingredients: ['Душица — 1 ст.л.', 'Зверобой — 1 ст.л.', 'Мята — 1 ч.л.'], steps: [
+                'ШАГ 1: ТРАВЫ. Смешайте душицу, зверобой и мяту.',
+                'ШАГ 2: ЗАВАРНИК. Насыпьте 2 ст.л. сбора в заварник.',
+                'ШАГ 3: ЗАЛИВКА. Залейте кипятком (500 мл).',
+                'ШАГ 4: НАСТАИВАНИЕ. Настаивайте 7 минут.',
+                'ШАГ 5: ПОДАЧА. Процедите, добавьте мед.'
+            ] },
+            { id: 67, title: 'Чай с мятой и медом', category: 'tea', time: '6 минут', image: 'https://avatars.mds.yandex.net/i?id=40a7fa0da2e8e9b8cfcb1bce7baa29a6b0017434-10414758-images-thumbs&n=13', ingredients: ['Мята — 5 веточек', 'Мед — 1 ч.л.'], steps: [
+                'ШАГ 1: МЯТА. Положите мяту в чашку.',
+                'ШАГ 2: ЗАЛИВКА. Залейте кипятком.',
+                'ШАГ 3: НАСТАИВАНИЕ. Накройте блюдцем, настаивайте 5 минут.',
+                'ШАГ 4: МЕД. Уберите мяту (или оставьте), добавьте мед.',
+                'ШАГ 5: ПЕРЕМЕШИВАНИЕ. Размешайте и пейте.'
+            ] },
+            { id: 68, title: 'Пряный чай с гвоздикой', category: 'tea', time: '8 минут', image: 'https://avatars.mds.yandex.net/i?id=d34a6732a8b2d19b8b69f6ba663e33a0_sr-5216269-images-thumbs&n=13', ingredients: ['Чай черный — 2 ч.л.', 'Гвоздика — 3 бутона', 'Корица — 1 палочка'], steps: [
+                'ШАГ 1: ПРЯНОСТИ. Положите в заварник чай, гвоздику и корицу.',
+                'ШАГ 2: ЗАЛИВКА. Залейте кипятком.',
+                'ШАГ 3: НАСТАИВАНИЕ. Настаивайте 5 минут.',
+                'ШАГ 4: ПРОЦЕЖИВАНИЕ. Процедите.',
+                'ШАГ 5: ПОДАЧА. Добавьте сахар. Пряный, согревающий.'
+            ] },
+            { id: 69, title: 'Чай с бергамотом и молоком', category: 'tea', time: '6 минут', image: 'https://avatars.mds.yandex.net/i?id=06631ff10ba44d558daa1310f6459868-5318617-images-thumbs&n=13', ingredients: ['Чай Эрл Грей — 2 ч.л.', 'Молоко — 100 мл'], steps: [
+                'ШАГ 1: ЧАЙ. Заварите Эрл Грей в 200 мл воды. Настаивайте 4 минуты.',
+                'ШАГ 2: МОЛОКО. Подогрейте молоко (не кипятите).',
+                'ШАГ 3: СМЕШИВАНИЕ. В чашку налейте чай, затем молоко. Соотношение 2:1.',
+                'ШАГ 4: САХАР. По желанию добавьте сахар.',
+                'ШАГ 5: ПОДАЧА. Подавайте горячим.'
+            ] },
+            { id: 70, title: 'Фруктовый чай с яблоком', category: 'tea', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=0b0d9b295bd5fa019823b91385fc5c5fdffe2143-9263520-images-thumbs&n=13', ingredients: ['Яблоко — 1 шт', 'Корица — 1 палочка', 'Мед — по вкусу'], steps: [
+                'ШАГ 1: ЯБЛОКО. Нарежьте яблоко тонкими дольками.',
+                'ШАГ 2: ВАРКА. Положите яблоко и корицу в кастрюльку, залейте водой (500 мл). Доведите до кипения, варите 5 минут.',
+                'ШАГ 3: НАСТАИВАНИЕ. Снимите с огня, настаивайте 5 минут.',
+                'ШАГ 4: ПРОЦЕЖИВАНИЕ. Процедите.',
+                'ШАГ 5: МЕД. Добавьте мед. Вкусный и полезный напиток.'
+            ] }
+        ];
+
+        // Food Recipes (71-106)
+        const foodRecipes = [
+            { id: 71, title: 'Паста Карбонара', category: 'food', time: '25 минут', image: 'https://avatars.mds.yandex.net/i?id=5f901086e7e748632af597564dbf031a7c8fbf19-9181638-images-thumbs&n=13', ingredients: ['Спагетти — 200 г', 'Яйца — 2 шт (только желтки)', 'Панчетта или бекон — 100 г', 'Сыр Пекорино Романо — 50 г', 'Пармезан — 50 г', 'Черный перец — свежемолотый'], steps: [
+                'ШАГ 1: ПОДГОТОВКА. Поставьте кастрюлю с водой для пасты. На крупной терке натрите сыры. Отделите желтки от белков (белки не понадобятся).',
+                'ШАГ 2: СОСУС. В миске смешайте желтки, оба вида сыра и много свежемолотого черного перца. Перемешайте вилкой до пасты. Не солите!',
+                'ШАГ 3: МЯСО. Нарежьте панчетту или бекон небольшими кубиками. Обжарьте на сухой сковороде до хруста. Выключите огонь.',
+                'ШАГ 4: ПАСТА. Сварите спагетти в подсоленной воде до состояния аль денте (на 1 минуту меньше, чем написано на упаковке). Сохраните 100 мл воды от варки.',
+                'ШАГ 5: СМЕШИВАНИЕ. Слейте пасту, переложите в сковороду с панчеттой. Быстро перемешайте. Влейте яично-сырную смесь и немного горячей воды от варки, постоянно помешивая. Тепло пасты растопит сыр и сварит яйца, но не даст им превратиться в омлет. Должен получиться кремообразный соус. Подавайте сразу.'
+            ] },
+            { id: 72, title: 'Пицца Маргарита', category: 'food', time: '40 минут', image: 'https://avatars.mds.yandex.net/i?id=c528302c96818efa83eaf54f47e9a3a552d1d7bb-9048286-images-thumbs&n=13', ingredients: ['Тесто для пиццы — 250 г', 'Томатный соус — 100 мл', 'Моцарелла — 125 г (свежая, шарик)', 'Базилик свежий — несколько листьев', 'Оливковое масло'], steps: [
+                'ШАГ 1: ТЕСТО. Достаньте тесто из холодильника за 30 минут до готовки. Разогрейте духовку до максимума (250°C), если есть камень для пиццы — поставьте его греться.',
+                'ШАГ 2: ФОРМОВКА. На посыпанном мукой столе растяните тесто руками в круг толщиной 3-5 мм. Не раскатывайте скалкой, чтобы не выгнать пузырьки воздуха.',
+                'ШАГ 3: СОУС. Смажьте основу томатным соусом, оставляя края свободными. Соус не должен быть толстым слоем.',
+                'ШАГ 4: СЫР. Порвите моцареллу руками на кусочки и разложите по пицце. Сбрызните оливковым маслом.',
+                'ШАГ 5: ВЫПЕКАНИЕ. Переложите пиццу на противень или камень. Выпекайте 10-15 минут до золотистых краев. Готовую пиццу посыпьте свежим базиликом.'
+            ] },
+            { id: 73, title: 'Цезарь с курицей', category: 'food', time: '20 минут', image: 'https://avatars.mds.yandex.net/i?id=c272063d13543cc44ba565ddb09ad8d832ea51f0-5548614-images-thumbs&n=13', ingredients: ['Куриное филе — 200 г', 'Салат Романо — 1 кочан', 'Пармезан — 50 г', 'Белый хлеб — 2 куска', 'Соус Цезарь — 100 мл'], steps: [
+                'ШАГ 1: КУРИЦА. Куриное филе посолите, поперчите. Обжарьте на сковороде с маслом по 5 минут с каждой стороны. Накройте фольгой и дайте отдохнуть.',
+                'ШАГ 2: СУХАРИКИ. Хлеб нарежьте кубиками. Подсушите на сухой сковороде или в духовке до золота.',
+                'ШАГ 3: САЛАТ. Листья салата вымойте, обсушите. Порвите руками на крупные куски.',
+                'ШАГ 4: СБОРКА. В миску положите салат, полейте частью соуса, перемешайте. Выложите на тарелку.',
+                'ШАГ 5: ФИНАЛ. Сверху положите нарезанную курицу, посыпьте сухариками и стружкой пармезана. Полейте оставшимся соусом.'
+            ] },
+            { id: 74, title: 'Бургер с говядиной', category: 'food', time: '30 минут', image: 'https://avatars.mds.yandex.net/i?id=8fec59103262393d38db95ebdd4474ae8b813f9b-8272935-images-thumbs&n=13', ingredients: ['Булочка для бургера', 'Говяжий фарш — 200 г (20% жирности)', 'Сыр чеддер — 1 ломтик', 'Помидор — 2 кружка', 'Салат айсберг', 'Красный лук', 'Соус (кетчуп+майонез+горчица)'], steps: [
+                'ШАГ 1: КОТЛЕТА. Из фарша сформируйте котлету толщиной 2 см, диаметром чуть больше булочки. Посолите, поперчите только перед жаркой. Сделайте ямочку пальцем в центре — чтобы котлета не вздулась.',
+                'ШАГ 2: ЖАРКА. Разогрейте сковороду-гриль или обычную. Жарьте котлету 3 минуты с одной стороны, переверните, положите сверху сыр и жарьте еще 3 минуты.',
+                'ШАГ 3: БУЛОЧКА. Разрежьте булочку, срезы поджарьте на той же сковороде.',
+                'ШАГ 4: СБОРКА. На нижнюю булочку намажьте соус, положите салат, котлету с сыром, помидор, лук. Накройте верхней булочкой.',
+                'ШАГ 5: ПОДАЧА. Дайте постоять 2 минуты, чтобы вкусы смешались. Подавайте с картошкой фри.'
+            ] },
+            { id: 75, title: 'Греческий салат', category: 'food', time: '15 минут', image: 'https://avatars.mds.yandex.net/i?id=d908f05a261b9ace3f36c019b1a5d47a423edd95-17022023-images-thumbs&n=13', ingredients: ['Помидоры — 2 шт', 'Огурец — 1 шт', 'Перец болгарский — 1 шт', 'Красный лук — 0.5 шт', 'Фета — 150 г', 'Маслины — 100 г', 'Оливковое масло', 'Орегано сушеный'], steps: [
+                'ШАГ 1: ОВОЩИ. Помидоры нарежьте крупными дольками. Огурец — крупными полукругами. Перец — кусками. Лук — тонкими полукольцами.',
+                'ШАГ 2: СЫР. Фету нарежьте крупными кубиками 2х2 см.',
+                'ШАГ 3: ЗАПРАВКА. В отдельной миске смешайте оливковое масло, соль, перец, орегано.',
+                'ШАГ 4: СМЕШИВАНИЕ. В глубокой тарелке смешайте овощи, маслины и фету. Полейте заправкой.',
+                'ШАГ 5: ПОДАЧА. Греческий салат не перемешивают сильно, чтобы не раздавить фету. Подают сразу.'
+            ] },
+            { id: 76, title: 'Куриный суп с лапшой', category: 'food', time: '45 минут', image: 'https://avatars.mds.yandex.net/i?id=cbc52a0f88fd7bb91e04a40977b4697a49c1f1ca-5161119-images-thumbs&n=13', ingredients: ['Курица (голень/бедро) — 300 г', 'Картофель — 2 шт', 'Морковь — 1 шт', 'Лук — 1 шт', 'Лапша — 50 г', 'Зелень'], steps: [
+                'ШАГ 1: БУЛЬОН. Курицу залейте холодной водой (2 л), доведите до кипения, снимите пену. Убавьте огонь, варите 30 минут.',
+                'ШАГ 2: ОВОЩИ. Картофель нарежьте кубиками. Морковь натрите на крупной терке. Лук мелко нарежьте.',
+                'ШАГ 3: ЗАКЛАДКА. Через 30 минут достаньте курицу, мясо отделите от костей, верните в бульон. Добавьте картофель, варите 10 минут.',
+                'ШАГ 4: ЗАЖАРКА. Обжарьте лук с морковью на масле до мягкости. Добавьте в суп.',
+                'ШАГ 5: ЛАПША. Положите лапшу, варите 5-7 минут. Посолите, поперчите, добавьте зелень. Выключите, дайте настояться 10 минут.'
+            ] },
+            { id: 77, title: 'Омлет с овощами', category: 'food', time: '15 минут', image: 'https://avatars.mds.yandex.net/i?id=6e7f18e223812b22a7f2e5f678e3ecd6790f60c6-4220247-images-thumbs&n=13', ingredients: ['Яйца — 3 шт', 'Молоко — 50 мл', 'Помидор — 1 шт', 'Перец болгарский — 0.5 шт', 'Сыр — 30 г'], steps: [
+                'ШАГ 1: ОВОЩИ. Помидор нарежьте кубиками, перец — тонкими полосками. Обжарьте на сковороде с маслом 2 минуты.',
+                'ШАГ 2: ЯЙЦА. В миске взбейте яйца с молоком, солью и перцем до однородности.',
+                'ШАГ 3: ЗАЛИВКА. Залейте овощи яичной смесью. Убавьте огонь до среднего.',
+                'ШАГ 4: СЫР. Посыпьте тертым сыром. Накройте крышкой.',
+                'ШАГ 5: ГОТОВНОСТЬ. Готовьте 5-7 минут, пока омлет не схватится. Подавайте горячим.'
+            ] },
+            { id: 78, title: 'Запеченный лосось', category: 'food', time: '25 минут', image: 'https://avatars.mds.yandex.net/i?id=77d69c385fdd29a9bc52633dbf230c2eb90e41c5-11485721-images-thumbs&n=13', ingredients: ['Филе лосося — 400 г', 'Лимон — 0.5 шт', 'Укроп', 'Оливковое масло', 'Соль, перец'], steps: [
+                'ШАГ 1: РЫБА. Филе лосося обсушите бумажным полотенцем. Посолите, поперчите с обеих сторон.',
+                'ШАГ 2: МАРИНОВКА. Сбрызните лимонным соком и оливковым маслом. Посыпьте рубленым укропом.',
+                'ШАГ 3: ФОЛЬГА. Заверните лосось в фольгу конвертом, оставив немного воздуха внутри.',
+                'ШАГ 4: ЗАПЕКАНИЕ. Разогрейте духовку до 180°C. Запекайте 20 минут.',
+                'ШАГ 5: ПОДАЧА. Разверните фольгу, подавайте с долькой лимона.'
+            ] },
+            { id: 79, title: 'Шакшука', category: 'food', time: '30 минут', image: 'https://avatars.mds.yandex.net/i?id=27cf4a86ae4a38d074cf0ad3a6d2cca5a1e0605f-8179254-images-thumbs&n=13', ingredients: ['Яйца — 4 шт', 'Помидоры — 4 шт', 'Перец болгарский — 1 шт', 'Лук — 1 шт', 'Чеснок — 2 зубчика', 'Томатная паста — 1 ст.л.', 'Паприка, кумин'], steps: [
+                'ШАГ 1: СОУС. На сковороде обжарьте лук и чеснок до прозрачности. Добавьте нарезанный перец, жарьте 3 минуты.',
+                'ШАГ 2: ПОМИДОРЫ. Помидоры натрите на терке или измельчите блендером. Добавьте в сковороду с томатной пастой и специями (паприка, кумин, соль, перец). Тушите 10 минут, пока соус не загустеет.',
+                'ШАГ 3: ЯЙЦА. Ложкой сделайте в соусе углубления. Вбейте в них яйца.',
+                'ШАГ 4: ДОВАРИВАНИЕ. Накройте крышкой, готовьте 5-7 минут до желаемой степени готовности желтка.',
+                'ШАГ 5: ПОДАЧА. Посыпьте зеленью, подавайте с хлебом.'
+            ] },
+            { id: 80, title: 'Котлеты по-киевски', category: 'food', time: '50 минут', image: 'https://avatars.mds.yandex.net/i?id=8b9a834af02e366fc2c7067767291823378ac9ae-5876836-images-thumbs&n=13', ingredients: ['Куриное филе — 2 шт', 'Масло сливочное — 80 г', 'Яйца — 2 шт', 'Панировочные сухари', 'Укроп', 'Чеснок'], steps: [
+                'ШАГ 1: МАСЛО. Сливочное масло размягчите, смешайте с рубленым укропом и измельченным чесноком. Сформируйте брусочки, уберите в морозилку.',
+                'ШАГ 2: ФИЛЕ. Куриное филе отбейте в тонкий пласт, посолите, поперчите.',
+                'ШАГ 3: ФОРМОВКА. На середину филе положите брусочек замороженного масла. Заверните конвертом, полностью закрыв масло внутри.',
+                'ШАГ 4: ПАНИРОВКА. Обваляйте котлету в муке, затем во взбитом яйце, затем в сухарях. Повторите яйцо-сухари для двойной панировки.',
+                'ШАГ 5: ЖАРКА. Разогрейте масло во фритюрнице или глубокой сковороде. Жарьте котлеты 5-7 минут до золота. Затем доведите в духовке 10 минут при 180°C, чтобы масло внутри растопилось.'
+            ] },
+            { id: 81, title: 'Борщ украинский', category: 'food', time: '90 минут', image: 'https://avatars.mds.yandex.net/i?id=0a13a6df7c9ef3f1eb768907d430a998da8f06d9-4936279-images-thumbs&n=13', ingredients: ['Свекла — 2 шт', 'Капуста — 300 г', 'Картофель — 3 шт', 'Морковь — 1 шт', 'Лук — 1 шт', 'Томатная паста — 2 ст.л.', 'Мясо (говядина) — 400 г'], steps: [
+                'ШАГ 1: БУЛЬОН. Мясо залейте водой (3 л), варите 1 час, снимая пену. Посолите в конце.',
+                'ШАГ 2: СВЕКЛА. Свеклу натрите, обжарьте на масле с добавлением уксуса и томатной пасты 10 минут.',
+                'ШАГ 3: ЗАЖАРКА. Лук и морковь обжарьте отдельно.',
+                'ШАГ 4: СБОРКА. В бульон положите нарезанный картофель, через 10 минут — капусту. Еще через 10 минут добавьте свеклу и зажарку.',
+                'ШАГ 5: НАСТАИВАНИЕ. Варите еще 10 минут. Выключите, добавьте чеснок и зелень. Дайте настояться минимум 30 минут.'
+            ] },
+            { id: 82, title: 'Плов узбекский', category: 'food', time: '80 минут', image: 'https://avatars.mds.yandex.net/i?id=c9372111c0198067b32b83fe20d7b428d889734c-10878270-images-thumbs&n=13', ingredients: ['Рис — 400 г (лучше девзира)', 'Баранина или говядина — 500 г', 'Морковь — 400 г', 'Лук — 200 г', 'Чеснок — 1 головка', 'Масло растительное', 'Зира, барбарис'], steps: [
+                'ШАГ 1: ПОДГОТОВКА. Мясо нарежьте кусками. Лук полукольцами, морковь соломкой. Разогрейте масло в казане до легкого дымка.',
+                'ШАГ 2: ЗИРВАК. Обжарьте лук до золота, добавьте мясо, жарьте до корочки. Добавьте морковь, жарьте 5 минут. Залейте кипятком, добавьте зиру, барбарис, соль. Варите 30 минут.',
+                'ШАГ 3: ЧЕСНОК. Воткните в мясо головку чеснока (очищенную от верхней шелухи).',
+                'ШАГ 4: РИС. Засыпьте рис, разровняйте. Залейте кипятком на 1 см выше риса. Варите, пока вода не впитается, соберите рис горкой, сделайте палочкой отверстия до дна.',
+                'ШАГ 5: УПАРИВАНИЕ. Убавьте огонь до минимума, накройте крышкой, томите 20 минут. Перемешайте перед подачей.'
+            ] },
+            { id: 83, title: 'Лазанья', category: 'food', time: '60 минут', image: 'https://avatars.mds.yandex.net/i?id=fd79ca0d2a5be00f416cc05006d1f01f1c1ea402-5747098-images-thumbs&n=13', ingredients: ['Листы лазаньи — 9 шт', 'Фарш мясной — 500 г', 'Лук — 1 шт', 'Томатный соус — 400 г', 'Молоко — 500 мл', 'Масло сливочное — 50 г', 'Мука — 50 г', 'Сыр — 200 г'], steps: [
+                'ШАГ 1: БОЛОНЬЕЗ. Обжарьте лук и фарш. Добавьте томатный соус, тушите 20 минут.',
+                'ШАГ 2: БЕШАМЕЛЬ. Растопите масло, добавьте муку, обжаривайте 1 минуту. Постепенно влейте молоко, постоянно мешая, варите до загустения. Посолите, добавьте мускат.',
+                'ШАГ 3: СБОРКА. На дно формы налейте немного бешамеля. Выложите листы, затем мясной соус, бешамель, сыр. Повторите слои. Верхний слой — бешамель и много сыра.',
+                'ШАГ 4: ЗАПЕКАНИЕ. Накройте фольгой, запекайте 30 минут при 180°C. Снимите фольгу, запекайте еще 10 минут.',
+                'ШАГ 5: ОТДЫХ. Дайте лазанье постоять 10 минут перед нарезкой.'
+            ] },
+            { id: 84, title: 'Стейк Рибай', category: 'food', time: '20 минут', image: 'https://avatars.mds.yandex.net/i?id=5250a221122efb0562c2c1e39d2302ec26cb3b65-5655335-images-thumbs&n=13', ingredients: ['Стейк рибай — 500 г (толщина 3-4 см)', 'Масло растительное', 'Чеснок — 3 зубчика', 'Тимьян', 'Масло сливочное'], steps: [
+                'ШАГ 1: ПОДГОТОВКА. Достаньте мясо из холодильника за час до готовки, чтобы оно согрелось до комнатной температуры. Обсушите бумажным полотенцем. Посолите, поперчите прямо перед жаркой.',
+                'ШАГ 2: СКОВОРОДА. Разогрейте сковороду (лучше чугунную) до максимума. Налейте масло с высокой температурой дымообразования.',
+                'ШАГ 3: ЖАРКА. Положите стейк, жарьте 2-3 минуты до золотой корочки. Переверните, жарьте еще 2 минуты.',
+                'ШАГ 4: АРОМАТ. Убавьте огонь, добавьте сливочное масло, чеснок и тимьян. Поливайте стейк маслом ложкой 1-2 минуты.',
+                'ШАГ 5: ОТДЫХ. Переложите стейк на доску, накройте фольгой, дайте отдохнуть 5-7 минут. Только потом нарезайте.'
+            ] },
+            { id: 85, title: 'Тирамису', category: 'food', time: '30 минут', image: 'https://avatars.mds.yandex.net/i?id=d1ec4c00ab521d1520dfe09c20bdf4061ee0bf67-5869256-images-thumbs&n=13', ingredients: ['Маскарпоне — 500 г', 'Яйца — 4 шт (свежие)', 'Сахар — 100 г', 'Печенье Савоярди — 200 г', 'Кофе эспрессо — 300 мл', 'Какао'], steps: [
+                'ШАГ 1: КОФЕ. Сварите крепкий кофе, остудите до комнатной температуры.',
+                'ШАГ 2: КРЕМ. Отделите белки от желтков. Желтки взбейте с сахаром добела. Добавьте маскарпоне, взбейте до однородности. Отдельно взбейте белки в крепкую пену, аккуратно вмешайте в сырную массу.',
+                'ШАГ 3: СБОРКА. Быстро обмакните печенье в кофе (не размачивайте) и выложите в форму.',
+                'ШАГ 4: СЛОИ. На печенье выложите половину крема. Повторите слой печенья и крема.',
+                'ШАГ 5: ОХЛАЖДЕНИЕ. Уберите в холодильник минимум на 4 часа. Перед подачей посыпьте какао через сито.'
+            ] },
+            { id: 86, title: 'Мотти (корейские рисовые шарики)', category: 'food', time: '20 минут', image: 'https://avatars.mds.yandex.net/i?id=b58070dace5de16a060df561303f47b02114e85e-4080597-images-thumbs&n=13', ingredients: ['Мука рисовая — 200 г', 'Сахар — 50 г', 'Соль — щепотка', 'Вода — 200 мл', 'Сгущенка или сладкая фасоль для начинки'], steps: [
+                'ШАГ 1: ТЕСТО. Смешайте рисовую муку, сахар, соль. Постепенно влейте воду, замесите мягкое тесто. Оно должно быть эластичным и не липнуть к рукам.',
+                'ШАГ 2: НАЧИНКА. Подготовьте начинку: сгущенное молоко, варенье, сладкая фасоль.',
+                'ШАГ 3: ФОРМОВКА. Мокрыми руками сформируйте лепешку, положите начинку, защипните края. Скатайте шарик.',
+                'ШАГ 4: ВАРКА. Вскипятите воду. Бросьте шарики, варите 3-5 минут после всплытия.',
+                'ШАГ 5: ПОДАЧА. Готовые мотти можно обвалять в кокосовой стружке или кунжуте.'
+            ] },
+            { id: 87, title: 'Брускетта с томатами', category: 'food', time: '15 минут', image: 'https://avatars.mds.yandex.net/i?id=b84288a9db2e1a8a5eea3eda65e033f7232fa1d3-10148308-images-thumbs&n=13', ingredients: ['Хлеб чиабатта — 4 ломтика', 'Помидоры черри — 200 г', 'Чеснок — 2 зубчика', 'Базилик', 'Оливковое масло'], steps: [
+                'ШАГ 1: ТОМАТЫ. Помидоры нарежьте мелким кубиком. Добавьте рубленый базилик, соль, перец, оливковое масло. Перемешайте, дайте настояться.',
+                'ШАГ 2: ХЛЕБ. Ломтики хлеба поджарьте на гриле, сухой сковороде или в тостере до хруста.',
+                'ШАГ 3: ЧЕСНОК. Горячий хлеб натрите чесноком.',
+                'ШАГ 4: НАЧИНКА. Выложите томатную смесь на хлеб.',
+                'ШАГ 5: ПОДАЧА. Сразу подавайте, чтобы хлеб не размок.'
+            ] },
+            { id: 88, title: 'Капрезе', category: 'food', time: '10 минут', image: 'https://avatars.mds.yandex.net/i?id=30e7811b288bdbafc93f4eba8dd4fbedaa2b3f4d-5231989-images-thumbs&n=13', ingredients: ['Моцарелла (шарики) — 250 г', 'Помидоры — 3 шт', 'Базилик', 'Оливковое масло', 'Бальзамический крем'], steps: [
+                'ШАГ 1: НАРЕЗКА. Помидоры и моцареллу нарежьте кружками одинаковой толщины.',
+                'ШАГ 2: СБОРКА. На тарелке выложите по очереди помидор, моцареллу, лист базилика.',
+                'ШАГ 3: ЗАПРАВКА. Посолите, поперчите, полейте оливковым маслом.',
+                'ШАГ 4: УКРАШЕНИЕ. Полейте бальзамическим кремом для красоты.',
+                'ШАГ 5: ПОДАЧА. Подавайте сразу.'
+            ] },
+            { id: 89, title: 'Жульен с грибами', category: 'food', time: '35 минут', image: 'https://avatars.mds.yandex.net/i?id=438b1c522fc751e806f850670238332a5e8a1e22-4576585-images-thumbs&n=13', ingredients: ['Шампиньоны — 400 г', 'Лук — 1 шт', 'Сливки 20% — 200 мл', 'Сыр — 100 г', 'Масло', 'Мука — 1 ст.л.'], steps: [
+                'ШАГ 1: ГРИБЫ. Лук нарежьте мелко, обжарьте до прозрачности. Грибы нарежьте пластинами, добавьте к луку, жарьте, пока не выпарится вода.',
+                'ШАГ 2: СОУС. Посыпьте грибы мукой, перемешайте, обжаривайте 1 минуту. Влейте сливки, варите до загустения. Посолите, поперчите.',
+                'ШАГ 3: ФОРМЫ. Разложите грибную массу по кокотницам (маленьким формочкам).',
+                'ШАГ 4: СЫР. Посыпьте тертым сыром.',
+                'ШАГ 5: ЗАПЕКАНИЕ. Запекайте в духовке при 200°C 10 минут, до золотой корочки.'
+            ] },
+            { id: 90, title: 'Ленивые голубцы', category: 'food', time: '50 минут', image: 'https://avatars.mds.yandex.net/i?id=430e273b5eca1f411f3dc5e9b2166abd20f7ab01-9148169-images-thumbs&n=13', ingredients: ['Фарш — 500 г', 'Капуста — 400 г', 'Рис — 100 г', 'Лук — 1 шт', 'Морковь — 1 шт', 'Томатная паста — 2 ст.л.', 'Сметана'], steps: [
+                'ШАГ 1: РИС. Отварите рис до полуготовности (10 минут).',
+                'ШАГ 2: КАПУСТА. Капусту нашинкуйте мелко. Обдайте кипятком, чтобы стала мягче.',
+                'ШАГ 3: ФАРШ. Смешайте фарш, рис, капусту, мелко рубленый лук, соль, перец. Сформируйте котлеты.',
+                'ШАГ 4: ОБЖАРКА. Обжарьте голубцы на сковороде до корочки с двух сторон.',
+                'ШАГ 5: ТУШЕНИЕ. Сложите в кастрюлю, залейте соусом (томатная паста+сметана+вода). Тушите 30 минут.'
+            ] },
+            { id: 91, title: 'Фалафель', category: 'food', time: '40 минут (+ замачивание)', image: 'https://avatars.mds.yandex.net/i?id=1d62369329e6bcb084ccefe62e7ed2d276717799-9837641-images-thumbs&n=13', ingredients: ['Нут сухой — 250 г', 'Лук — 1 шт', 'Чеснок — 3 зубчика', 'Петрушка', 'Кинза', 'Кумин, кориандр', 'Сода'], steps: [
+                'ШАГ 1: ЗАМАЧИВАНИЕ. Замочите нут в холодной воде на ночь (минимум 12 часов). Важно: не варить!',
+                'ШАГ 2: ИЗМЕЛЬЧЕНИЕ. Слейте воду. Пропустите нут через мясорубку или измельчите в блендере с луком, чесноком и зеленью. Не делайте пюре, должны оставаться крупинки.',
+                'ШАГ 3: СПЕЦИИ. Добавьте соль, перец, кумин, кориандр, щепотку соды. Перемешайте. Дайте постоять 15 минут.',
+                'ШАГ 4: ФОРМОВКА. Мокрыми руками сформируйте шарики размером с грецкий орех.',
+                'ШАГ 5: ЖАРКА. Разогрейте масло для фритюра. Жарьте фалафель порциями 3-4 минуты до золота. Выкладывайте на бумажное полотенце.'
+            ] },
+            { id: 92, title: 'Хумус', category: 'food', time: '15 минут', image: 'https://avatars.mds.yandex.net/i?id=8ef10689538b7a25e2049ea8e7202552ebdbe5bc-5426889-images-thumbs&n=13', ingredients: ['Нут консервированный — 400 г', 'Тхина (кунжутная паста) — 3 ст.л.', 'Чеснок — 2 зубчика', 'Лимонный сок — 3 ст.л.', 'Кумин', 'Оливковое масло'], steps: [
+                'ШАГ 1: НУТ. Слейте жидкость из банки нута, но сохраните ее. Промойте нут холодной водой.',
+                'ШАГ 2: ПЮРИРОВАНИЕ. В блендере смешайте нут, тхину, чеснок, лимонный сок, кумин, соль. Начните взбивать, добавляя понемногу жидкость от нута.',
+                'ШАГ 3: КОНСИСТЕНЦИЯ. Добейтесь кремовой, гладкой текстуры. Хумус не должен быть густым, должен легко мазаться.',
+                'ШАГ 4: ПОДАЧА. Выложите в тарелку, сделайте ложкой углубление, налейте оливковое масло. Посыпьте паприкой.',
+                'ШАГ 5: ХРАНЕНИЕ. Храните в холодильнике до 5 дней.'
+            ] },
+            { id: 93, title: 'Ризотто с грибами', category: 'food', time: '40 минут', image: 'https://avatars.mds.yandex.net/i?id=7f2c343aad6cbfb092db6282387d666c784b0d84-4872489-images-thumbs&n=13', ingredients: ['Рис арборио — 300 г', 'Шампиньоны — 300 г', 'Лук — 1 шт', 'Бульон (овощной/куриный) — 1 л', 'Пармезан — 50 г', 'Масло сливочное', 'Вино белое — 100 мл'], steps: [
+                'ШАГ 1: ГРИБЫ. Грибы нарежьте, обжарьте на масле до золота, уберите из сковороды.',
+                'ШАГ 2: ЛУК. В той же сковороде обжарьте мелко рубленый лук до прозрачности.',
+                'ШАГ 3: РИС. Добавьте рис, обжаривайте 2 минуты, пока края не станут прозрачными. Влейте вино, мешайте, пока не выпарится.',
+                'ШАГ 4: БУЛЬОН. Добавляйте бульон по половнику, постоянно помешивая. Каждый следующий половник, когда предыдущий впитался. Через 15 минут верните грибы.',
+                'ШАГ 5: МАНТЕКАТУРА. Через 20 минут (рис должен быть аль денте) снимите с огня. Добавьте масло и тертый пармезан, энергично перемешайте. Дайте постоять 2 минуты.'
+            ] },
+            { id: 94, title: 'Том Ям (тайский суп)', category: 'food', time: '45 минут', image: 'https://avatars.mds.yandex.net/i?id=1ba8967e0f5443ce2065e067c89b063fb4b44738-12912407-images-thumbs&n=13', ingredients: ['Креветки — 300 г', 'Кокосовое молоко — 200 мл', 'Шампиньоны — 200 г', 'Лемонграсс — 2 стебля', 'Корень галангала — 3 см', 'Листья лайма — 4 шт', 'Перец чили', 'Паста том ям', 'Рыбный соус', 'Лайм'], steps: [
+                'ШАГ 1: БУЛЬОН. В кастрюлю налейте воду (1 л). Добавьте лемонграсс (раздавите), галангал (нарезанный), листья лайма, чили. Варите 15 минут.',
+                'ШАГ 2: ГРИБЫ. Процедите бульон, верните на огонь. Добавьте нарезанные грибы, варите 5 минут.',
+                'ШАГ 3: ПАСТА. Добавьте пасту том ям (1-2 ст.л.) и рыбный соус (2 ст.л.).',
+                'ШАГ 4: КРЕВЕТКИ. Положите очищенные креветки, варите 3 минуты до готовности.',
+                'ШАГ 5: КОКОС. Влейте кокосовое молоко, доведите до кипения и выключите. Добавьте сок лайма. Подавайте с рисом.'
+            ] },
+            { id: 95, title: 'Фо Бо (вьетнамский суп)', category: 'food', time: '90 минут', image: 'https://avatars.mds.yandex.net/i?id=1d553d28c51e35a016733efc20b919566053fcbd-8497453-images-thumbs&n=13', ingredients: ['Говядина (грудинка) — 500 г', 'Рисовая лапша — 200 г', 'Лук — 1 шт', 'Имбирь — 5 см', 'Звездчатый анис — 2 шт', 'Корица — 1 палочка', 'Рыбный соус', 'Зелень (кинза, тайский базилик)', 'Лайм', 'Перец чили'], steps: [
+                'ШАГ 1: БУЛЬОН. Говядину залейте холодной водой (2 л), доведите до кипения, слейте первый бульон (он мутный). Налейте чистую воду, добавьте лук и имбирь, которые предварительно обожгите на сухой сковороде до черноты — это дает характерный копченый вкус. Добавьте анис и корицу. Варите на минимальном огне 1.5 часа, снимая пену. Бульон должен оставаться прозрачным.',
+                'ШАГ 2: ПРОЦЕЖИВАНИЕ. Готовый бульон процедите через марлю или мелкое сито. Мясо достаньте, нарежьте тонкими ломтиками. Бульон приправьте рыбным соусом (2-3 ст.л.) и щепоткой сахара — это баланс вкуса.',
+                'ШАГ 3: ЛАПША. Отварите рисовую лапшу согласно инструкции (обычно 3-5 минут). Не переварите, она должна быть мягкой, но упругой. Промойте холодной водой, чтобы остановить варку.',
+                'ШАГ 4: СБОРКА. В глубокую тарелку положите лапшу, сверху ломтики мяса, залейте кипящим бульоном. Мясо сразу дойдет до готовности.',
+                'ШАГ 5: ПОДАЧА. Отдельно подайте тарелку с зеленью (кинза, базилик, мята), ростками сои, перцем чили и дольками лайма. Каждый добавляет зелень в тарелку по вкусу и выдавливает лайм прямо в суп.'
+            ] },
+            { id: 96, title: 'Рататуй', category: 'food', time: '50 минут', image: 'https://avatars.mds.yandex.net/i?id=bbd368a4994fb3176ce8e2e7d10d20e25d70614b-5285349-images-thumbs&n=13', ingredients: ['Кабачки — 2 шт', 'Баклажаны — 2 шт', 'Помидоры — 4 шт', 'Перец болгарский — 2 шт', 'Лук — 1 шт', 'Чеснок — 3 зубчика', 'Тимьян', 'Оливковое масло'], steps: [
+                'ШАГ 1: СОУС. Лук и перец нарежьте мелким кубиком, обжарьте на оливковом масле до мягкости. Добавьте 2 помидора (натертых на терке), чеснок, тимьян, соль, перец. Тушите 10 минут до загустения. Протрите через сито, если хотите гладкий соус.',
+                'ШАГ 2: ОВОЩИ. Кабачки, баклажаны и оставшиеся 2 помидора нарежьте тонкими кружками (2-3 мм). Важно, чтобы все было одинаковой толщины.',
+                'ШАГ 3: СБОРКА. В форму для запекания вылейте соус, разровняйте. По спирали или рядами выложите овощи, чередуя: кабачок, баклажан, помидор. Плотно друг к другу.',
+                'ШАГ 4: ЗАПЕКАНИЕ. Сбрызните овощи маслом, посолите, поперчите, посыпьте тимьяном. Накройте пергаментом (бумага для выпечки), запекайте 40 минут при 160°C.',
+                'ШАГ 5: ПОДАЧА. Подавайте горячим или теплым. Можно посыпать свежей зеленью. Это блюдо из фильма "Рататуй" — тот самый, что пробуждает воспоминания.'
+            ] },
+            { id: 97, title: 'Киш с брокколи (открытый пирог)', category: 'food', time: '45 минут', image: 'https://avatars.mds.yandex.net/i?id=1e695799d7d93408f86b47eda3e8b4eee8e7ae60-13273715-images-thumbs&n=13', ingredients: ['Тесто слоеное или песочное — 250 г', 'Брокколи — 400 г', 'Яйца — 3 шт', 'Сливки 20% — 200 мл', 'Сыр — 100 г', 'Чеснок — 1 зубчик', 'Мускатный орех'], steps: [
+                'ШАГ 1: ОСНОВА. Раскатайте тесто, выложите в форму (диаметр 24 см), сформируйте бортики. Наколите вилкой, чтобы не вздувалось. Уберите в холодильник на 15 минут.',
+                'ШАГ 2: БЛАНШИРОВКА. Брокколи разберите на соцветия. Бланшируйте в кипящей подсоленной воде 3 минуты, затем сразу в ледяную воду (чтобы сохранить цвет). Откиньте на дуршлаг.',
+                'ШАГ 3: ЗАЛИВКА. В миске взбейте яйца со сливками, солью, перцем, тертым чесноком и щепоткой мускатного ореха. Добавьте половину тертого сыра.',
+                'ШАГ 4: СБОРКА. На тесто выложите брокколи, залейте яичной смесью. Посыпьте оставшимся сыром.',
+                'ШАГ 5: ВЫПЕКАНИЕ. Выпекайте 30-35 минут при 180°C до золотистого цвета. Дайте постоять 10 минут перед подачей.'
+            ] },
+            { id: 98, title: 'Картофель по-деревенски', category: 'food', time: '40 минут', image: 'https://avatars.mds.yandex.net/i?id=5c2267ccb5aefa5986525ff109c58272309670f6-11401793-images-thumbs&n=13', ingredients: ['Картофель — 1 кг (молодой лучше)', 'Масло растительное', 'Чеснок — 3 зубчика', 'Паприка копченая', 'Розмарин', 'Соль, перец'], steps: [
+                'ШАГ 1: КАРТОФЕЛЬ. Тщательно вымойте картофель, особенно если молодой. Можно не чистить, кожура дает хруст. Нарежьте дольками (каждую картофелину на 6-8 частей).',
+                'ШАГ 2: БЛАНШИРОВКА. Положите картофель в холодную воду, доведите до кипения, варите 5 минут. Это сделает его мягким внутри и хрустящим снаружи. Слейте воду, обсушите.',
+                'ШАГ 3: ПРИПРАВЫ. В миске смешайте масло, пропущенный через пресс чеснок, паприку, розмарин, соль, перец. Залейте картофель, тщательно перемешайте.',
+                'ШАГ 4: ЗАПЕКАНИЕ. Выложите картофель на противень в один слой (не наваливайте кучкой). Запекайте 30 минут при 200°C, перевернув один раз.',
+                'ШАГ 5: ПОДАЧА. Подавайте горячим, посыпав свежей зеленью. Отлично с соусом — сметана+чеснок или кетчуп.'
+            ] },
+            { id: 99, title: 'Спагетти Болоньезе', category: 'food', time: '45 минут', image: 'https://avatars.mds.yandex.net/i?id=be8fee06e3777268f35021c363997f4153cc51ee-6416987-images-thumbs&n=13', ingredients: ['Спагетти — 300 г', 'Фарш (говядина+свинина) — 400 г', 'Лук — 1 шт', 'Морковь — 1 шт', 'Сельдерей — 1 стебель', 'Томаты в собственном соку — 400 г', 'Красное вино — 100 мл', 'Томатная паста'], steps: [
+                'ШАГ 1: СОФФРИТО. Лук, морковь и сельдерей нарежьте очень мелким кубиком (это называется соффрито). Обжаривайте на оливковом масле 10 минут до мягкости.',
+                'ШАГ 2: ФАРШ. Добавьте фарш, разбивая комочки лопаткой. Жарьте, пока мясо не поменяет цвет. Посолите, поперчите.',
+                'ШАГ 3: ВИНО. Влейте вино, выпаривайте алкоголь 2 минуты.',
+                'ШАГ 4: ТОМАТЫ. Добавьте томаты (раздавите ложкой) и томатную пасту (1 ст.л.). Тушите на маленьком огне под крышкой 30 минут. В конце добавьте немного молока или сливок — это уберет кислоту.',
+                'ШАГ 5: ПАСТА. Отварите спагетти до аль денте. Смешайте с соусом, подавайте с тертым пармезаном.'
+            ] },
+            { id: 100, title: 'Лапша Wok с курицей', category: 'food', time: '25 минут', image: 'https://avatars.mds.yandex.net/i?id=eab4299842be5d37767c5c2ed205e0e7ba26d816221f4a83-13202504-images-thumbs&n=13', ingredients: ['Лапша (удон или яичная) — 200 г', 'Куриное филе — 300 г', 'Перец болгарский — 1 шт', 'Морковь — 1 шт', 'Лук — 1 шт', 'Соевый соус', 'Устричный соус', 'Кунжутное масло', 'Чеснок', 'Имбирь'], steps: [
+                'ШАГ 1: ПОДГОТОВКА. Курицу нарежьте тонкими полосками. Овощи тоже нарежьте соломкой (морковь, перец, лук). Чеснок и имбирь мелко порубите.',
+                'ШАГ 2: ЛАПША. Отварите лапшу согласно инструкции, промойте холодной водой, сбрызните кунжутным маслом, чтобы не слиплась.',
+                'ШАГ 3: ВОК. Сильно разогрейте вок или большую сковороду с маслом. Бросайте ингредиенты по очереди: сначала имбирь и чеснок (10 сек), затем курицу (жарьте 2 минуты, постоянно помешивая), затем овощи (жарьте еще 2 минуты). Огонь должен быть максимальным.',
+                'ШАГ 4: СОУС. Добавьте лапшу, соевый соус (2 ст.л.), устричный соус (1 ст.л.), щепотку сахара. Перемешивайте, подбрасывая, 1 минуту.',
+                'ШАГ 5: ПОДАЧА. Посыпьте кунжутом и зеленым луком. Подавайте сразу.'
+            ] },
+            { id: 101, title: 'Сэндвич с тунцом', category: 'food', time: '15 минут', image: 'https://avatars.mds.yandex.net/i?id=85df5327c120dd9dfdc24284b4ae8c6d7735d4b5-10952687-images-thumbs&n=13', ingredients: ['Хлеб для тостов — 2 куска', 'Тунец консервированный — 1 банка', 'Майонез — 1 ст.л.', 'Красный лук — 0.5 шт', 'Корнишоны — 3 шт', 'Салат', 'Помидор'], steps: [
+                'ШАГ 1: ТУНЕЦ. Слейте жидкость из банки. Разомните тунца вилкой в миске.',
+                'ШАГ 2: ДОБАВКИ. Мелко нарежьте лук и корнишоны. Добавьте к тунцу. Положите майонез, перемешайте. Посолите, поперчите.',
+                'ШАГ 3: ХЛЕБ. Поджарьте хлеб в тостере или на сковороде.',
+                'ШАГ 4: СБОРКА. На один кусок хлеба положите салат, тунцовую смесь, кружок помидора. Накройте вторым куском.',
+                'ШАГ 5: ПОДАЧА. Разрежьте по диагонали. Можно подавать с чипсами.'
+            ] },
+            { id: 102, title: 'Клаб сэндвич', category: 'food', time: '20 минут', image: 'https://avatars.mds.yandex.net/i?id=5be619d055e3136b23463463239a763f3cebb437-12325301-images-thumbs&n=13', ingredients: ['Тостовый хлеб — 3 куска', 'Куриное филе — 1 шт', 'Бекон — 4 полоски', 'Помидор', 'Салат', 'Майонез', 'Яйцо — 1 шт'], steps: [
+                'ШАГ 1: КУРИЦА. Куриное филе отбейте, посолите, поперчите. Обжарьте на сковороде до готовности. Или используйте готовую курицу-гриль.',
+                'ШАГ 2: БЕКОН. Обжарьте бекон до хруста. Яйцо пожарьте глазунью (желток должен остаться жидким).',
+                'ШАГ 3: ТОСТЫ. Поджарьте хлеб.',
+                'ШАГ 4: СБОРКА (первый слой). На первый тост намажьте майонез, положите салат, курицу, помидор. Накройте вторым тостом.',
+                'ШАГ 5: СБОРКА (второй слой). На второй тост сверху положите бекон, яйцо, салат. Накройте третьим тостом. Закрепите шпажками, разрежьте на 4 треугольника.'
+            ] },
+            { id: 103, title: 'Чизкейк Нью-Йорк', category: 'food', time: '90 минут + охлаждение', image: 'https://avatars.mds.yandex.net/i?id=7de0f4c0056e1d937b68a8179ee0b104238d1ec3-5031277-images-thumbs&n=13', ingredients: ['Печенье (Юбилейное) — 300 г', 'Масло сливочное — 100 г', 'Сливочный сыр (Филадельфия) — 900 г', 'Сахар — 200 г', 'Яйца — 3 шт', 'Сливки 33% — 100 мл', 'Ваниль', 'Лимонный сок'], steps: [
+                'ШАГ 1: ОСНОВА. Печенье измельчите в крошку в блендере или в пакете скалкой. Растопите масло, смешайте с крошкой. Утрамбуйте стаканом в форму (дно и немного бортики). Уберите в холодильник на 30 минут.',
+                'ШАГ 2: СЫРНАЯ МАССА. Сыр должен быть комнатной температуры. Взбейте миксером сыр с сахаром до гладкости (не взбивайте сильно, не нужно насыщать воздухом). По одному добавляйте яйца, каждый раз вмешивая. Добавьте сливки, ваниль, лимонный сок (1 ст.л.). Перемешайте.',
+                'ШАГ 3: ФОРМА. Оберните форму снаружи фольгой в 2 слоя (водяная баня). Вылейте начинку на корж.',
+                'ШАГ 4: ВЫПЕКАНИЕ. Поставьте форму в глубокий противень, налейте кипяток до середины формы. Выпекайте 60 минут при 160°C. Чизкейк должен быть слегка дрожащим в центре.',
+                'ШАГ 5: ОХЛАЖДЕНИЕ. Выключите духовку, приоткройте дверцу, оставьте чизкейк там на 1 час. Затем достаньте, остудите до комнатной температуры. Уберите в холодильник минимум на 6 часов, лучше на ночь.'
+            ] },
+            { id: 104, title: 'Панкейки (американские блинчики)', category: 'food', time: '20 минут', image: 'https://avatars.mds.yandex.net/i?id=c61e92e543a778d0444b4c80cdf2430e5bcefba1-5306229-images-thumbs&n=13', ingredients: ['Мука — 200 г', 'Молоко — 250 мл', 'Яйцо — 1 шт', 'Сахар — 2 ст.л.', 'Разрыхлитель — 2 ч.л.', 'Соль — щепотка', 'Масло растительное — 2 ст.л.'], steps: [
+                'ШАГ 1: СУХИЕ. В одной миске смешайте муку, разрыхлитель, сахар, соль.',
+                'ШАГ 2: ЖИДКИЕ. В другой миске взбейте яйцо, молоко, масло.',
+                'ШАГ 3: СМЕШИВАНИЕ. Влейте жидкие в сухие, быстро перемешайте венчиком. Не старайтесь разбить все комочки — если мешать долго, панкейки будут резиновыми. Дайте тесту постоять 5 минут.',
+                'ШАГ 4: ЖАРКА. Разогрейте сковороду (лучше антипригарную). Смажьте маслом только первый раз. Наливайте тесто половником в центр сковороды — оно само растечется в круг.',
+                'ШАГ 5: ПЕРЕВОРОТ. Жарьте, пока не появятся пузырьки и края не подсохнут (2 минуты). Переверните, жарьте еще 1 минуту. Подавайте с кленовым сиропом, ягодами, медом.'
+            ] },
+            { id: 105, title: 'Шарлотка с яблоками', category: 'food', time: '50 минут', image: 'https://avatars.mds.yandex.net/i?id=03b11439434a832c13bd73c337b0d076a9aedad1-5655860-images-thumbs&n=13', ingredients: ['Яблоки — 4 шт (кислые, типа Антоновка)', 'Мука — 200 г', 'Сахар — 200 г', 'Яйца — 4 шт', 'Разрыхлитель — 1 ч.л.', 'Корица'], steps: [
+                'ШАГ 1: ЯБЛОКИ. Яблоки очистите от кожуры, удалите сердцевину. Нарежьте кубиками или дольками. Посыпьте корицей, можно сбрызнуть лимонным соком.',
+                'ШАГ 2: ТЕСТО. Яйца с сахаром взбивайте миксером 5-7 минут до пышной светлой массы. Масса должна увеличиться в 2-3 раза. Это важно, чтобы шарлотка поднялась.',
+                'ШАГ 3: МУКА. Просейте муку с разрыхлителем в яичную массу. Аккуратно перемешайте лопаткой снизу вверх, чтобы не осадить пену.',
+                'ШАГ 4: СБОРКА. Форму смажьте маслом, присыпьте мукой. Выложите яблоки, залейте тестом. Слегка постучите формой, чтобы тесто распределилось.',
+                'ШАГ 5: ВЫПЕКАНИЕ. Выпекайте 40 минут при 180°C. Готовность проверяйте палочкой — сухая. Дайте остыть в форме 10 минут.'
+            ] },
+            { id: 106, title: 'Брауни', category: 'food', time: '35 минут', image: 'https://avatars.mds.yandex.net/i?id=019f6758397a7f184a441cfde988aafc9f9ffeeb-10351804-images-thumbs&n=13', ingredients: ['Темный шоколад (70%) — 200 г', 'Сливочное масло — 150 г', 'Сахар — 200 г', 'Яйца — 3 шт', 'Мука — 100 г', 'Какао — 2 ст.л.', 'Соль — щепотка'], steps: [
+                'ШАГ 1: ШОКОЛАД. Поломайте шоколад в миску, добавьте масло. Растопите на водяной бане или в микроволновке короткими импульсами. Перемешайте до гладкости. Остудите до теплого.',
+                'ШАГ 2: ЯЙЦА. В другой миске взбейте яйца с сахаром до светлой пены. Не нужно взбивать до жестких пиков, просто до растворения сахара.',
+                'ШАГ 3: СМЕШИВАНИЕ. Влейте шоколадную массу в яйца, перемешайте. Просейте муку, какао и соль, аккуратно вмешайте лопаткой. Не мешайте долго.',
+                'ШАГ 4: ФОРМА. Застелите форму (20х20 см) пергаментом. Вылейте тесто, разровняйте.',
+                'ШАГ 5: ВЫПЕКАНИЕ. Выпекайте 20-25 минут при 180°C. Важно: брауни должен остаться влажным внутри. Палочка должна выходить с влажными крошками, не сухая. Полностью остудите в форме, только потом нарезайте.'
+            ] }
+        ];
+
+        const allRecipes = [...coffeeRecipes, ...teaRecipes, ...foodRecipes];
+
+        let favorites = [];
+        try { favorites = JSON.parse(localStorage.getItem('favorites')) || []; } catch(e) {}
+
+        let currentPage = 'home';
+        let currentFilter = 'all';
+        let searchQuery = '';
+
+        const main = document.getElementById('main-content');
+
+        window.toggleMobileMenu = function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+            const icon = document.querySelector('.mobile-menu-toggle i');
+            icon.className = menu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+        };
+
+        window.navigateTo = function(page) {
+            currentPage = page;
+            if (page === 'home')          renderHome();
+            else if (page === 'coffee')   { currentFilter = 'coffee'; searchQuery = ''; renderRecipes(); }
+            else if (page === 'tea')      { currentFilter = 'tea';    searchQuery = ''; renderRecipes(); }
+            else if (page === 'food')     { currentFilter = 'food';   searchQuery = ''; renderRecipes(); }
+            else if (page === 'favorites') renderFavorites();
+            else if (page === 'contacts')  renderContacts();
+
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.remove('active');
+            document.querySelector('.mobile-menu-toggle i').className = 'fas fa-bars';
+        };
+
+        function renderHome() {
+            main.innerHTML = `
+                <section class="hero">
+                    <div class="container hero-container">
+                        <div class="hero-content">
+                            <h1 class="hero-title"><span>Nortix</span> - 106 подробных рецептов</h1>
+                            <p class="hero-text">Кофе, чай и еда с пошаговыми инструкциями. Каждый рецепт проверен и описан до мелочей.</p>
+                            <div class="hero-buttons">
+                                <button class="btn" onclick="navigateTo('coffee')">Кофе (${coffeeRecipes.length})</button>
+                                <button class="btn btn-outline" onclick="navigateTo('tea')">Чай (${teaRecipes.length})</button>
+                                <button class="btn btn-outline" onclick="navigateTo('food')">Еда (${foodRecipes.length})</button>
+                            </div>
+                        </div>
+                        <div class="hero-image">
+                            <img src="https://avatars.mds.yandex.net/i?id=353766b95ca7150d6720ecbf7c90596f0bd421d4-12598198-images-thumbs&n=13" alt="Coffee" loading="lazy">
+                        </div>
+                    </div>
+                </section>
+                <section class="stats">
+                    <div class="container stats-grid">
+                        <div class="stat-item"><div class="stat-number">${coffeeRecipes.length}</div><div>рецептов кофе</div></div>
+                        <div class="stat-item"><div class="stat-number">${teaRecipes.length}</div><div>рецептов чая</div></div>
+                        <div class="stat-item"><div class="stat-number">${foodRecipes.length}</div><div>рецептов еды</div></div>
+                        <div class="stat-item"><div class="stat-number">${favorites.length}</div><div>в избранном</div></div>
+                    </div>
+                </section>
+                <section>
+                    <div class="container">
+                        <h2 style="margin: 30px 0; text-align: center; font-size: 24px;">Популярные рецепты</h2>
+                        <div class="recipes-grid">${allRecipes.slice(0,6).map(r => card(r)).join('')}</div>
+                    </div>
+                </section>`;
+            favListeners();
+        }
+
+        function renderFavorites() {
+            const list = allRecipes.filter(r => favorites.includes(r.id));
+            main.innerHTML = `
+                <section class="favorites-header">
+                    <div class="container">
+                        <h2>Избранное</h2>
+                        <p>${list.length} рецептов в избранном</p>
+                    </div>
+                </section>
+                <section>
+                    <div class="container">
+                        <div class="recipes-grid">
+                            ${list.length > 0
+                                ? list.map(r => card(r)).join('')
+                                : '<p style="text-align:center;color:var(--text-secondary);padding:40px;">У вас пока нет избранных рецептов</p>'}
+                        </div>
+                    </div>
+                </section>`;
+            favListeners();
+        }
+
+        function getFiltered() {
+            let list = currentFilter === 'all' ? allRecipes : allRecipes.filter(r => r.category === currentFilter);
+            const q = searchQuery.trim().toLowerCase();
+            if (q) list = list.filter(r => r.title.toLowerCase().includes(q));
+            return list;
+        }
+
+        function renderRecipes() {
+            const filtered = getFiltered();
+            const catName = { coffee:'Кофе', tea:'Чай', food:'Еда', all:'Все рецепты' }[currentFilter];
+
+            main.innerHTML = `
+                <section class="search-section">
+                    <div class="container">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Поиск рецептов..." autocomplete="off">
+                        </div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn ${currentFilter==='all'?'active':''}" onclick="setFilter('all')">Все</button>
+                            <button class="filter-btn ${currentFilter==='coffee'?'active':''}" onclick="setFilter('coffee')">Кофе</button>
+                            <button class="filter-btn ${currentFilter==='tea'?'active':''}" onclick="setFilter('tea')">Чай</button>
+                            <button class="filter-btn ${currentFilter==='food'?'active':''}" onclick="setFilter('food')">Еда</button>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="container">
+                        <h2 id="resultsTitle" style="margin:20px 0;font-size:20px;">${catName} (${filtered.length})</h2>
+                        <div class="recipes-grid" id="recipesGrid">
+                            ${renderCards(filtered)}
+                        </div>
+                    </div>
+                </section>`;
+
+            const input = document.getElementById('searchInput');
+            input.value = searchQuery;
+            input.addEventListener('input', function() {
+                searchQuery = this.value;
+                refreshGrid();
+            });
+
+            favListeners();
+        }
+
+        function refreshGrid() {
+            const filtered = getFiltered();
+            const catName = { coffee:'Кофе', tea:'Чай', food:'Еда', all:'Все рецепты' }[currentFilter];
+
+            const title = document.getElementById('resultsTitle');
+            if (title) title.textContent = `${catName} (${filtered.length})`;
+
+            const grid = document.getElementById('recipesGrid');
+            if (grid) {
+                grid.innerHTML = renderCards(filtered);
+                favListeners();
+            }
+        }
+
+        function renderCards(list) {
+            return list.length > 0
+                ? list.map(r => card(r)).join('')
+                : '<p style="text-align:center;color:var(--text-secondary);padding:40px;">Ничего не найдено</p>';
+        }
+
+        window.setFilter = function(filter) {
+            currentFilter = filter;
+            renderRecipes();
+        };
+
+        function card(recipe) {
+            const isFav = favorites.includes(recipe.id);
+            const catNames = { coffee:'Кофе', tea:'Чай', food:'Еда' };
+            return `
+                <div class="recipe-card" onclick="viewRecipe(${recipe.id})">
+                    <div class="recipe-image">
+                        <img src="${recipe.image}" alt="${recipe.title}" loading="lazy">
+                    </div>
+                    <div class="recipe-content">
+                        <div class="recipe-title">
+                            <h3>${recipe.title}</h3>
+                            <span class="recipe-category">${catNames[recipe.category]}</span>
+                        </div>
+                        <div class="recipe-time"><i class="far fa-clock"></i> ${recipe.time}</div>
+                        <div class="recipe-ingredients">
+                            <h4>Ингредиенты:</h4>
+                            <ul>${recipe.ingredients.slice(0,3).map(i => `<li>${i.split(' — ')[0]}</li>`).join('')}</ul>
+                        </div>
+                        <div class="recipe-footer">
+                            <button class="favorite-btn" data-id="${recipe.id}" onclick="event.stopPropagation();toggleFav(${recipe.id})">
+                                <i class="${isFav?'fas':'far'} fa-heart"></i>
+                            </button>
+                            <button class="btn" style="padding:8px 16px;" onclick="event.stopPropagation();viewRecipe(${recipe.id})">Смотреть</button>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        window.viewRecipe = function(id) {
+            const recipe = allRecipes.find(r => r.id === id);
+            if (!recipe) return;
+            const isFav = favorites.includes(id);
+            const catNames = { coffee:'Кофе', tea:'Чай', food:'Еда' };
+
+            main.innerHTML = `
+                <section class="single-recipe">
+                    <div class="container">
+                        <button class="back-btn" onclick="navigateTo('${recipe.category}')">
+                            <i class="fas fa-arrow-left"></i> Назад к рецептам
+                        </button>
+                        <div class="single-recipe-container">
+                            <div class="single-recipe-image">
+                                <img src="${recipe.image}" alt="${recipe.title}" loading="lazy">
+                            </div>
+                            <div class="single-recipe-content">
+                                <h1>${recipe.title}</h1>
+                                <div class="single-recipe-meta">
+                                    <span><i class="far fa-clock"></i> ${recipe.time}</span>
+                                    <span><i class="fas fa-tag"></i> ${catNames[recipe.category]}</span>
+                                </div>
+                                <div class="single-recipe-ingredients">
+                                    <h2>Ингредиенты</h2>
+                                    <ul>${recipe.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
+                                </div>
+                                <div class="single-recipe-steps">
+                                    <h2>Пошаговое приготовление</h2>
+                                    <ol>${recipe.steps.map(s => `<li>${s}</li>`).join('')}</ol>
+                                </div>
+                                <button class="btn" style="margin-top:20px;width:100%;" onclick="toggleFav(${id})">
+                                    <i class="${isFav?'fas':'far'} fa-heart"></i>
+                                    ${isFav ? 'В избранном' : 'Добавить в избранное'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>`;
+        };
+
+        function renderContacts() {
+            main.innerHTML = `
+                <section class="contacts-page">
+                    <div class="container">
+                        <div class="contacts-card">
+                            <div class="contacts-icon">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                            <h2>Свяжитесь с нами</h2>
+                            <p>Нашли ошибку или есть предложение?</p>
+                            <p>Напишите нам на почту:</p>
+                            <div class="contacts-email">
+                                <i class="far fa-envelope" style="margin-right: 10px;"></i>
+                                nortix.coffee@gmail.com
+                            </div>
+                            <p class="contacts-note">Мы отвечаем в течение 48 часов</p>
+                        </div>
+                    </div>
+                </section>`;
+        }
+
+        window.toggleFav = function(id) {
+            if (favorites.includes(id)) favorites = favorites.filter(f => f !== id);
+            else favorites.push(id);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+
+            if (document.querySelector('.single-recipe')) {
+                viewRecipe(id);
+            } else if (currentPage === 'home') {
+                renderHome();
+            } else if (currentPage === 'favorites') {
+                renderFavorites();
+            } else {
+                refreshGrid();
+            }
+        };
+
+        function favListeners() {
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleFav(parseInt(btn.dataset.id));
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderHome();
+            showCookieConsent();
+            
+            const yearElement = document.querySelector('.footer p');
+            if (yearElement) {
+                const currentYear = new Date().getFullYear();
+                yearElement.innerHTML = `© ${currentYear} Nortix кофе, чай и еда`;
+            }
+        });
+    </script>
+</body>
+</html>
